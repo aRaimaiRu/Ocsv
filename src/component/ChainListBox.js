@@ -1,4 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
+import { act } from "react-dom/test-utils";
 import "./ChainListBox.css";
 
 export default function ChainListBox() {
@@ -19,7 +20,10 @@ export default function ChainListBox() {
     หัวข้อ6: {},
   });
 
-  const [main, setMain] = useState(["main1", "main2"]);
+  const [main, setMain] = useState([
+    { id: 0, title: "main1" },
+    { id: 1, title: "main2" },
+  ]);
 
   const [sub, setSub] = useState([
     { main: 0, title: "sub1", id: 0 },
@@ -63,13 +67,14 @@ export default function ChainListBox() {
         <div class="mylistbox">
           {main.map((c, id) => (
             <div
+              class={selection1 == c.id ? "active" : ""}
               onClick={() => {
-                setselection1(id);
+                setselection1(c.id);
                 setselection2(-1);
                 console.log("Click");
               }}
             >
-              {c}
+              {c.title}
             </div>
           ))}
           <button>+</button>
@@ -82,7 +87,7 @@ export default function ChainListBox() {
           {sub
             .filter((c) => c.main == selection1)
             .map((c, id) => (
-              <div onClick={() => setselection2(id)}> {c.title} </div>
+              <div onClick={() => setselection2(c.id)}> {c.title} </div>
             ))}
         </div>
         <button>+</button>
