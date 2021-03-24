@@ -1,24 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { Component } from "react";
+import Container from "@material-ui/core/Container";
+import CoursePage from "./component/containers/CoursePage";
+import CreateCoursePage from "./component/containers/CreateCoursePage";
+import ChoicePage from "./component/containers/ChoicePage";
+import QuestionPage from "./component/containers/QuestionPage";
+import "./App.css";
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Container className="container">
+        {/* <div className="header"></div> */}
+        <Switch>
+          <Route exact path="/">
+            <CoursePage />
+          </Route>
+          <Route path="/CreateCoursePage">
+            <CreateCoursePage />
+          </Route>
+          <Route path="/QuestionPage">
+            <QuestionPage />
+          </Route>
+          <Route path="/ChoicePage">
+            <ChoicePage />
+          </Route>
+        </Switch>
+      </Container>
+    </Router>
   );
 }
 

@@ -1,0 +1,32 @@
+.row-flex {
+  display: flex;
+  flex-flow: row wrap;
+}
+.col-flex-item {
+  display: flex;
+  flex-flow: column;
+}
+.vertical-divider {
+  border-right: 1px solid black;
+}
+
+label {
+  margin-right: 1em;
+}
+.text-input {
+  width: auto;
+}
+
+.mgt {
+  margin-top: 1.2em;
+}
+.spaceevenly {
+  display: flex;
+  justify-content: space-evenly;
+}
+form {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  display: inline-block;
+}
