@@ -35,7 +35,7 @@ export default function ChainListBox() {
   }
   const [selection1, setselection1] = useState(-1);
   const [selection2, setselection2] = useState(-1);
-  const [selection3, setselection3] = useState(-1);
+
   const list2 = [];
   for (var x in mydata["หัวข้อ1"]) {
     list2.push(x);
@@ -72,6 +72,8 @@ export default function ChainListBox() {
               {c}
             </div>
           ))}
+          <button>+</button>
+          <button>-</button>
         </div>
       </div>
 
@@ -83,6 +85,8 @@ export default function ChainListBox() {
               <div onClick={() => setselection2(id)}> {c.title} </div>
             ))}
         </div>
+        <button>+</button>
+        <button>-</button>
       </div>
 
       <div class="col-md-4  vertical-divider">
@@ -93,6 +97,8 @@ export default function ChainListBox() {
               <div>{c.content}</div>
             ))}
         </div>
+        <button>+</button>
+        <button>-</button>
       </div>
     </div>
   );
