@@ -19,24 +19,34 @@ export default function ChainListBox() {
     หัวข้อ6: {},
   });
 
+  const [main, setMain] = useState(["main1", "main2"]);
+
+  const [sub, setSub] = useState([
+    { main: 0, title: "sub1", id: 0 },
+    { main: 0, title: "sub2", id: 1 },
+    { main: 1, title: "sub3", id: 2 },
+  ]);
+
+  const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
+
   const list1 = [];
   for (var x in mydata) {
     list1.push(x);
   }
-  const [selection1, setselection1] = useState(list1[0]);
-
+  const [selection1, setselection1] = useState(0);
+  const [selection2, setselection2] = useState(0);
+  const [selection3, setselection3] = useState(0);
   const list2 = [];
   for (var x in mydata["หัวข้อ1"]) {
     list2.push(x);
   }
-  const [selection2, setselection2] = useState("");
 
   const list3 = [];
   for (var x in mydata["หัวข้อ1"]["หัวข้อย่อยที่1"]) {
     //mydata.หัวข้อ1.หัวข้อย่อยที่2
     list3.push(x);
   }
-  const [selection3, setselection3] = useState(list3[0]);
+
   console.log(`list1 = ${list1}
               list2 = ${list2}
               list3 = ${list3}
@@ -46,30 +56,41 @@ export default function ChainListBox() {
   useEffect(() => {
     // Update the document title using the browser API
   });
+
   return (
     <div class="row row-flex mgt">
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {list1.map((value) => (
-            <div id={value}>{value}</div>
+          {main.map((c, id) => (
+            <div
+              onClick={() => {
+                setselection1(id);
+                console.log("Click");
+              }}
+            >
+              {c}
+            </div>
           ))}
         </div>
       </div>
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {list2.map((value) => (
-            <div id={value}>{value}</div>
-          ))}
+          {sub
+            .filter((c) => c.main == selection1)
+            .map((c) => (
+              <div> {c.title} </div>
+            ))}
         </div>
       </div>
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {console.log(mydata[selection1][selection2])}
-          {list3.map((value) => (
-            <div id={value}>{value}</div>
-          ))}
+          {content
+            .filter((c) => c.sub == selection3)
+            .map((c) => (
+              <div>{c.content}</div>
+            ))}
         </div>
       </div>
     </div>
