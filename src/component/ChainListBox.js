@@ -2,6 +2,11 @@ import React, { Component, useState, useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import "./ChainListBox.css";
 
+const randomInt = () => {
+  console.log(Math.random() * 100000);
+  return Math.round(Math.random() * 100000);
+};
+
 export default function ChainListBox() {
   const [mydata, setmyData] = useState({
     หัวข้อ1: {
@@ -24,6 +29,10 @@ export default function ChainListBox() {
     { id: 0, title: "main1" },
     { id: 1, title: "main2" },
   ]);
+
+  const createMain = () => {
+    setMain([...main, { id: randomInt(), title: "..." }]);
+  };
 
   const [sub, setSub] = useState([
     { main: 0, title: "sub1", id: 0 },
@@ -71,13 +80,13 @@ export default function ChainListBox() {
               onClick={() => {
                 setselection1(c.id);
                 setselection2(-1);
-                console.log("Click");
+                console.log("Click", c);
               }}
             >
               {c.title}
             </div>
           ))}
-          <button>+</button>
+          <button onClick={createMain}>+</button>
           <button>-</button>
         </div>
       </div>
