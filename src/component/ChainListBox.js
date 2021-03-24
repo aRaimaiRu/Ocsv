@@ -33,9 +33,9 @@ export default function ChainListBox() {
   for (var x in mydata) {
     list1.push(x);
   }
-  const [selection1, setselection1] = useState(0);
-  const [selection2, setselection2] = useState(0);
-  const [selection3, setselection3] = useState(0);
+  const [selection1, setselection1] = useState(-1);
+  const [selection2, setselection2] = useState(-1);
+  const [selection3, setselection3] = useState(-1);
   const list2 = [];
   for (var x in mydata["หัวข้อ1"]) {
     list2.push(x);
@@ -65,6 +65,7 @@ export default function ChainListBox() {
             <div
               onClick={() => {
                 setselection1(id);
+                setselection2(-1);
                 console.log("Click");
               }}
             >
@@ -78,8 +79,8 @@ export default function ChainListBox() {
         <div class="mylistbox">
           {sub
             .filter((c) => c.main == selection1)
-            .map((c) => (
-              <div> {c.title} </div>
+            .map((c, id) => (
+              <div onClick={() => setselection2(id)}> {c.title} </div>
             ))}
         </div>
       </div>
@@ -87,7 +88,7 @@ export default function ChainListBox() {
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
           {content
-            .filter((c) => c.sub == selection3)
+            .filter((c) => c.sub == selection2)
             .map((c) => (
               <div>{c.content}</div>
             ))}
