@@ -1,5 +1,5 @@
 import React from "react";
-import MyCard from "../outlinedCard";
+import MyCard from "./outlinedCard";
 export default function CourseCard({ courses }) {
   return (
     <div className="Courses">

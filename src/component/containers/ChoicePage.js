@@ -6,7 +6,10 @@ export default class ChoicePage extends Component {
     return (
       <div style={{ display: "flex", flexDirection: "column" }}>
         <div style={{ margin: "auto" }}>
-          <Checkbox inputProps={{ "aria-label": "primary checkbox" }} />
+          <select>
+            <option>1</option>
+            <option>2</option>
+          </select>
           <input type="text"></input>
           <Button
             variant="contained"

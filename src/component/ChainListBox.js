@@ -73,14 +73,14 @@ export default function ChainListBox() {
   //   setMain([...main, { id: randomInt(), title: "..." }]);
   // };
 
-  const [selection1, setselection1] = useState(-1);
-  const [selection2, setselection2] = useState(-1);
-  const [selection3, setselection3] = useState(-1);
+  const [selection1, setselection1] = useState("");
+  const [selection2, setselection2] = useState("");
+  const [selection3, setselection3] = useState("");
 
   return (
-    <div class="row row-flex mgt">
-      <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
+    <div className="row row-flex mgt">
+      <div className="col-md-4  vertical-divider">
+        <div className="mylistbox">
           {data.map((dataobj) => (
             <div
               className={selection1 == dataobj.หัวข้อ ? "active" : ""}
@@ -98,8 +98,8 @@ export default function ChainListBox() {
         </div>
       </div>
 
-      <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
+      <div className="col-md-4  vertical-divider">
+        <div className="mylistbox">
           {data
             .filter((dataobj) => dataobj.หัวข้อ == selection1)
             .map((dataobj) => (
@@ -118,8 +118,8 @@ export default function ChainListBox() {
         <button>-</button>
       </div>
 
-      <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
+      <div className="col-md-4  vertical-divider">
+        <div className="mylistbox">
           {data
             .filter(
               (dataobj) =>
