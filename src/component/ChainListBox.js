@@ -1,5 +1,5 @@
-import React, { Component, useState, useEffect } from "react";
-import { act } from "react-dom/test-utils";
+import React, { useState } from "react";
+
 import "./ChainListBox.css";
 
 const randomInt = () => {
@@ -8,56 +8,110 @@ const randomInt = () => {
 };
 
 export default function ChainListBox() {
-  
-  const [main, setMain] = useState([
-    { id: 0, title: "main1" },
-    { id: 1, title: "main2" },
+  const [data, Mydata] = useState([
+    {
+      ระดับชั้น: "วิทยาการคำนวณ ม.1",
+      Module: "วิทยากรคอมพิวเตอร์",
+      หัวข้อ: "นามประธรรมกับการแก้ปัญหา",
+      หัวข้อย่อย: "แนวคิดเชิงนามธรรม",
+      ข้อมูลในหน้า:
+        "1การคัดเลือกคุณลักษณะที่จำเป็นต่อการแก้ปัญหา คือการพิจารณาปัญหาที่อาจประกอบไปด้วยรายละเอียดจำนวนมาก ทั้งที่จำเป็นและไม่จำเป็นต่อการแก้ปัญหา ดังนั้นในการแก้ปัญหานักเรียนควรเลือกเฉพาะรายละเอียดที่จำเป็นเท่านั้น ",
+      ข้อมูลchoice: [],
+      indexของเฉลย: [],
+      ประเภท: "content",
+      รูปภาพ: "",
+      ตัวเลือก: "",
+      อธิบายเฉลยเพิ่มเติม: "",
+      ลิ้งค์เว็บไซต์ต่างประเทศ: "",
+    },
+    {
+      ระดับชั้น: "วิทยาการคำนวณ ม.1",
+      Module: "วิทยากรคอมพิวเตอร์",
+      หัวข้อ: "นามประธรรมกับการแก้ปัญหา",
+      หัวข้อย่อย: "แนวคิดเชิงนามธรรม",
+      ข้อมูลในหน้า:
+        "2การคัดเลือกคุณลักษณะที่จำเป็นต่อการแก้ปัญหา คือการพิจารณาปัญหาที่อาจประกอบไปด้วยรายละเอียดจำนวนมาก ทั้งที่จำเป็นและไม่จำเป็นต่อการแก้ปัญหา ดังนั้นในการแก้ปัญหานักเรียนควรเลือกเฉพาะรายละเอียดที่จำเป็นเท่านั้น ",
+      ข้อมูลchoice: [],
+      indexของเฉลย: [],
+      ประเภท: "content",
+      รูปภาพ: "",
+      ตัวเลือก: "",
+      อธิบายเฉลยเพิ่มเติม: "",
+      ลิ้งค์เว็บไซต์ต่างประเทศ: "",
+    },
+    {
+      ระดับชั้น: "วิทยาการคำนวณ ม.1",
+      Module: "วิทยากรคอมพิวเตอร์",
+      หัวข้อ: "นามประธรรมกับการแก้ปัญหา3",
+      หัวข้อย่อย: "แนวคิดเชิงนามธรรม2",
+      ข้อมูลในหน้า: "test",
+      ข้อมูลchoice: [],
+      indexของเฉลย: [],
+      ประเภท: "content",
+      รูปภาพ: "",
+      ตัวเลือก: "",
+      อธิบายเฉลยเพิ่มเติม: "",
+      ลิ้งค์เว็บไซต์ต่างประเทศ: "",
+    },
+    {
+      ระดับชั้น: "วิทยาการคำนวณ ม.1",
+      Module: "วิทยากรคอมพิวเตอร์",
+      หัวข้อ: "นามประธรรมกับการแก้ปัญหา2",
+      หัวข้อย่อย: "แนวคิดเชิงนามธรรม2",
+      ข้อมูลในหน้า: "JAvascript เจ็งมาก ",
+      ข้อมูลchoice: [],
+      indexของเฉลย: [],
+      ประเภท: "content",
+      รูปภาพ: "",
+      ตัวเลือก: "",
+      อธิบายเฉลยเพิ่มเติม: "",
+      ลิ้งค์เว็บไซต์ต่างประเทศ: "",
+    },
   ]);
 
-  const createMain = () => {
-    setMain([...main, { id: randomInt(), title: "..." }]);
-  };
-
-  const [sub, setSub] = useState([
-    { main: 0, title: "sub1", id: 0 },
-    { main: 0, title: "sub2", id: 1 },
-    { main: 1, title: "sub3", id: 2 },
-  ]);
-
-  const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
-
+  // const createMain = () => {
+  //   setMain([...main, { id: randomInt(), title: "..." }]);
+  // };
 
   const [selection1, setselection1] = useState(-1);
   const [selection2, setselection2] = useState(-1);
-
+  const [selection3, setselection3] = useState(-1);
 
   return (
     <div class="row row-flex mgt">
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {main.map((c, id) => (
+          {data.map((dataobj) => (
             <div
-              class={selection1 == c.id ? "active" : ""}
+              className={selection1 == dataobj.หัวข้อ ? "active" : ""}
               onClick={() => {
-                setselection1(c.id);
-                setselection2(-1);
-                console.log("Click", c);
+                setselection1(dataobj.หัวข้อ);
+                setselection2(dataobj.หัวข้อ);
+                setselection3(dataobj.หัวข้อ);
               }}
             >
-              {c.title}
+              {dataobj.หัวข้อ}
             </div>
           ))}
-          <button onClick={createMain}>+</button>
+          <button>+</button>
           <button>-</button>
         </div>
       </div>
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {sub
-            .filter((c) => c.main == selection1)
-            .map((c, id) => (
-              <div onClick={() => setselection2(c.id)}> {c.title} </div>
+          {data
+            .filter((dataobj) => dataobj.หัวข้อ == selection1)
+            .map((dataobj) => (
+              <div
+                className={selection2 == dataobj.หัวข้อย่อย ? "active" : ""}
+                onClick={() => {
+                  setselection2(dataobj.หัวข้อย่อย);
+                  setselection3(-1);
+                }}
+              >
+                {dataobj.หัวข้อย่อย}
+              </div>
             ))}
         </div>
         <button>+</button>
@@ -66,10 +120,19 @@ export default function ChainListBox() {
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
-          {content
-            .filter((c) => c.sub == selection2)
-            .map((c) => (
-              <div>{c.content}</div>
+          {data
+            .filter(
+              (dataobj) =>
+                (dataobj.หัวข้อ == selection1) &
+                (dataobj.หัวข้อย่อย == selection2)
+            )
+            .map((dataobj) => (
+              <div
+                className={selection3 == dataobj.ข้อมูลในหน้า ? "active" : ""}
+                onClick={() => setselection3(dataobj.ข้อมูลในหน้า)}
+              >
+                {dataobj.ประเภท + " " + dataobj.ข้อมูลในหน้า.substring(0, 11)}
+              </div>
             ))}
         </div>
         <button>+</button>
