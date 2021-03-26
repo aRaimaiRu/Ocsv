@@ -8,23 +8,7 @@ const randomInt = () => {
 };
 
 export default function ChainListBox() {
-  const [mydata, setmyData] = useState({
-    หัวข้อ1: {
-      หัวข้อย่อย1: {
-        content1: "Javascriptเจ๋งมาก",
-        content2: "Javascriptเจ๋งมาก2",
-        หัวข้อคำถาม: {},
-        Choiceแบบเลือกตอบ: {},
-        Choiceเลือกตอบแบบมีลำดับ: {},
-      },
-    },
-    หัวข้อ2: {},
-    หัวข้อ3: {},
-    หัวข้อ4: {},
-    หัวข้อ5: {},
-    หัวข้อ6: {},
-  });
-
+  
   const [main, setMain] = useState([
     { id: 0, title: "main1" },
     { id: 1, title: "main2" },
@@ -42,33 +26,10 @@ export default function ChainListBox() {
 
   const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
 
-  const list1 = [];
-  for (var x in mydata) {
-    list1.push(x);
-  }
+
   const [selection1, setselection1] = useState(-1);
   const [selection2, setselection2] = useState(-1);
 
-  const list2 = [];
-  for (var x in mydata["หัวข้อ1"]) {
-    list2.push(x);
-  }
-
-  const list3 = [];
-  for (var x in mydata["หัวข้อ1"]["หัวข้อย่อยที่1"]) {
-    //mydata.หัวข้อ1.หัวข้อย่อยที่2
-    list3.push(x);
-  }
-
-  console.log(`list1 = ${list1}
-              list2 = ${list2}
-              list3 = ${list3}
-              selection2 = ${selection2}
-              mydata["หัวข้อ1"]["หัวข้อย่อย1"] = ${mydata["หัวข้อ1"]["หัวข้อย่อย1"]}
-  `);
-  useEffect(() => {
-    // Update the document title using the browser API
-  });
 
   return (
     <div class="row row-flex mgt">
