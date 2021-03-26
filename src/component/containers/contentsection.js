@@ -77,7 +77,7 @@ export default class contentsection extends Component {
           ></textarea>
 
           {this.state.children.map((c) => c)}
-          <div onClick={this.addElement}>+</div>
+          <div onClick={this.addElementChoice}>+</div>
 
           <row className="mgt">
             <label style={{ float: "left", marginBottom: "0" }}>
