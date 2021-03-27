@@ -1,11 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import { act } from "react-dom/test-utils";
 import "./ChainListBox.css";
-
-const randomInt = () => {
-  console.log(Math.random() * 100000);
-  return Math.round(Math.random() * 100000);
-};
+import { randomInt } from "../utils";
 
 export default function ChainListBox() {
   const [main, setMain] = useState([
