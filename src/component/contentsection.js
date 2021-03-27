@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import ChoicePage from "./containers/ChoicePage";
 export default class contentsection extends Component {
   render() {
     return (
@@ -19,6 +19,8 @@ export default class contentsection extends Component {
             style={{ width: "100%" }}
             placeholder="html editor"
           ></textarea>
+          <div>Create</div>
+          <ChoicePage />
           <row className="mgt">
             <label style={{ float: "left", marginBottom: "0" }}>
               อธิบายเฉลยเพิ่มเติม
