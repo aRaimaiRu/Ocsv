@@ -1,122 +1,85 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./CreateCoursePage.css";
-import Contentsection from "./contentsection";
+import ContentSection from "../ContentSection";
 import ChainListBox from "../ChainListBox";
+import { randomInt } from "../../utils";
+export default function CreateCoursePage() {
+  const [main, setMain] = useState([
+    { id: 0, title: "main1" },
+    { id: 1, title: "main2" },
+  ]);
 
-export default class CreateCoursePage extends Component {
-  constructor() {
-    super();
-    // this.state = {
-    //   data: [
-    //     {
-    //       ระดับชั้น: "วิทยาการคำนวณ ม.1",
-    //       Module: "วิทยากรคอมพิวเตอร์",
-    //       หัวข้อ: "นามประธรรมกับการแก้ปัญหา",
-    //       หัวข้อย่อย: "แนวคิดเชิงนามธรรม",
-    //       ข้อมูลในหน้า:
-    //         "1การคัดเลือกคุณลักษณะที่จำเป็นต่อการแก้ปัญหา คือการพิจารณาปัญหาที่อาจประกอบไปด้วยรายละเอียดจำนวนมาก ทั้งที่จำเป็นและไม่จำเป็นต่อการแก้ปัญหา ดังนั้นในการแก้ปัญหานักเรียนควรเลือกเฉพาะรายละเอียดที่จำเป็นเท่านั้น ",
-    //       ข้อมูลchoice: [],
-    //       indexของเฉลย: [],
-    //       ประเภท: "content",
-    //       รูปภาพ: "",
-    //       ตัวเลือก: "",
-    //       อธิบายเฉลยเพิ่มเติม: "",
-    //       ลิ้งค์เว็บไซต์ต่างประเทศ: "",
-    //     },
-    //     {
-    //       ระดับชั้น: "วิทยาการคำนวณ ม.1",
-    //       Module: "วิทยากรคอมพิวเตอร์",
-    //       หัวข้อ: "นามประธรรมกับการแก้ปัญหา",
-    //       หัวข้อย่อย: "แนวคิดเชิงนามธรรม",
-    //       ข้อมูลในหน้า:
-    //         "2การคัดเลือกคุณลักษณะที่จำเป็นต่อการแก้ปัญหา คือการพิจารณาปัญหาที่อาจประกอบไปด้วยรายละเอียดจำนวนมาก ทั้งที่จำเป็นและไม่จำเป็นต่อการแก้ปัญหา ดังนั้นในการแก้ปัญหานักเรียนควรเลือกเฉพาะรายละเอียดที่จำเป็นเท่านั้น ",
-    //       ข้อมูลchoice: [],
-    //       indexของเฉลย: [],
-    //       ประเภท: "content",
-    //       รูปภาพ: "",
-    //       ตัวเลือก: "",
-    //       อธิบายเฉลยเพิ่มเติม: "",
-    //       ลิ้งค์เว็บไซต์ต่างประเทศ: "",
-    //     },
-    //     {
-    //       ระดับชั้น: "วิทยาการคำนวณ ม.1",
-    //       Module: "วิทยากรคอมพิวเตอร์",
-    //       หัวข้อ: "นามประธรรมกับการแก้ปัญหา3",
-    //       หัวข้อย่อย: "แนวคิดเชิงนามธรรม2",
-    //       ข้อมูลในหน้า: "test",
-    //       ข้อมูลchoice: [],
-    //       indexของเฉลย: [],
-    //       ประเภท: "content",
-    //       รูปภาพ: "",
-    //       ตัวเลือก: "",
-    //       อธิบายเฉลยเพิ่มเติม: "",
-    //       ลิ้งค์เว็บไซต์ต่างประเทศ: "",
-    //     },
-    //     {
-    //       ระดับชั้น: "วิทยาการคำนวณ ม.1",
-    //       Module: "วิทยากรคอมพิวเตอร์",
-    //       หัวข้อ: "นามประธรรมกับการแก้ปัญหา2",
-    //       หัวข้อย่อย: "แนวคิดเชิงนามธรรม2",
-    //       ข้อมูลในหน้า: "JAvascript เจ็งมาก ",
-    //       ข้อมูลchoice: [],
-    //       indexของเฉลย: [],
-    //       ประเภท: "content",
-    //       รูปภาพ: "",
-    //       ตัวเลือก: "",
-    //       อธิบายเฉลยเพิ่มเติม: "",
-    //       ลิ้งค์เว็บไซต์ต่างประเทศ: "",
-    //     },
-    //   ],
-    //   selection1: "",
-    //   selection2: "",
-    //   selection3: "",
-    // };
-  }
+  const createMain = () => {
+    setMain([...main, { id: randomInt(), title: "..." }]);
+  };
 
-  render() {
-    return (
-      <>
-        <div className="mgt">
-          <label style={{ float: "left", marginBottom: "0" }}>ระดับชั้น</label>
-          <input
-            class="validate[required] text-input "
-            type="text"
-            name="Grade"
-            id="Grade"
-          />
-        </div>
-        <div className="mgt">
-          <label style={{ float: "left", marginBottom: "0" }}>Module</label>
-          <input
-            class="validate[required] text-input "
-            type="text"
-            name="Module"
-            id="Module"
-          />
-        </div>
+  const [sub, setSub] = useState([
+    { main: 0, title: "sub1", id: 0 },
+    { main: 0, title: "sub2", id: 1 },
+    { main: 1, title: "sub3", id: 2 },
+  ]);
 
-        <div className="spaceevenly mgt">
-          <Button variant="contained" color="primary" href="/CreateCoursePage">
-            Save
-          </Button>
-          <Button variant="contained" color="primary" href="/CreateCoursePage">
-            Download CSV
-          </Button>
-        </div>
+  const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
 
-        <ChainListBox />
-        <Contentsection />
+  const [selection1, setselection1] = useState(-1);
+  const [selection2, setselection2] = useState(-1);
 
-        <div className="spaceevenly mgt">
-          <Button variant="contained" color="primary" href="/QuestionPage">
-            รูปที่เคย Upload
-          </Button>
-          <Button variant="contained" color="primary" href="/CreateCoursePage">
-            Upload รูป
-          </Button>
-        </div>
-      </>
-    );
-  }
+  const allProps = {
+    main,
+    setMain,
+    createMain,
+    sub,
+    setSub,
+    content,
+    setContent,
+    selection1,
+    setselection1,
+    selection2,
+    setselection2,
+  };
+
+  return (
+    <>
+      <div className="mgt">
+        <label style={{ float: "left", marginBottom: "0" }}>ระดับชั้น</label>
+        <input
+          class="validate[required] text-input "
+          type="text"
+          name="Grade"
+          id="Grade"
+        />
+      </div>
+      <div className="mgt">
+        <label style={{ float: "left", marginBottom: "0" }}>Module</label>
+        <input
+          class="validate[required] text-input "
+          type="text"
+          name="Module"
+          id="Module"
+        />
+      </div>
+
+      <div className="spaceevenly mgt">
+        <Button variant="contained" color="primary" href="/CreateCoursePage">
+          Save
+        </Button>
+        <Button variant="contained" color="primary" href="/CreateCoursePage">
+          Download CSV
+        </Button>
+      </div>
+
+      <ChainListBox allProps={allProps} />
+      <ContentSection />
+
+      <div className="spaceevenly mgt">
+        <Button variant="contained" color="primary" href="/QuestionPage">
+          --------
+        </Button>
+        <Button variant="contained" color="primary" href="/CreateCoursePage">
+          upload รูป
+        </Button>
+      </div>
+    </>
+  );
 }
