@@ -1,6 +1,10 @@
 import React, { Component, useState } from "react";
 import ChoicePage from "./containers/ChoicePage";
 export default function ContentSection() {
+  const [ChoiceList, setChoiceList] = useState([]);
+  const CreateNewChoice = () => {
+    setChoiceList([...ChoiceList, 0]);
+  };
   return (
     <div className="container" style={{ borderStyle: "solid" }}>
       <form
@@ -18,8 +22,10 @@ export default function ContentSection() {
           style={{ width: "100%" }}
           placeholder="html editor"
         ></textarea>
-        <div>Create</div>
-        <ChoicePage />
+        <div onClick={CreateNewChoice}>Create</div>
+        {ChoiceList.map((c) => (
+          <ChoicePage listLength={ChoiceList.length} />
+        ))}
         <row className="mgt">
           <label style={{ float: "left", marginBottom: "0" }}>
             อธิบายเฉลยเพิ่มเติม
