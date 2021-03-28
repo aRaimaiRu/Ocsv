@@ -3,30 +3,22 @@ import { act } from "react-dom/test-utils";
 import "./ChainListBox.css";
 import { randomInt } from "../utils";
 
-export default function ChainListBox() {
-  const [main, setMain] = useState([
-    { id: 0, title: "main1" },
-    { id: 1, title: "main2" },
-  ]);
+export default function ChainListBox(props) {
+  const {
+    main,
+    setMain,
+    createMain,
+    sub,
+    setSub,
+    content,
+    setContent,
+    selection1,
+    setselection1,
+    selection2,
+    setselection2,
+  } = props.allProps;
 
-  const createMain = () => {
-    setMain([...main, { id: randomInt(), title: "..." }]);
-  };
-
-  const [sub, setSub] = useState([
-    { main: 0, title: "sub1", id: 0 },
-    { main: 0, title: "sub2", id: 1 },
-    { main: 1, title: "sub3", id: 2 },
-  ]);
-
-  const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
-
-  const [selection1, setselection1] = useState(-1);
-  const [selection2, setselection2] = useState(-1);
-
-  useEffect(() => {
-    // Update the document title using the browser API
-  });
+  console.log(props, "!!!!");
 
   return (
     <div class="row row-flex mgt">
