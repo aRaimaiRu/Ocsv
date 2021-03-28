@@ -1,5 +1,5 @@
 import Button from "@material-ui/core/Button";
-import CourseCard from "../Dump/CourseCard";
+import CourseCard from "../CourseCard";
 import React, { Component } from "react";
 
 export default class CoursePage extends Component {

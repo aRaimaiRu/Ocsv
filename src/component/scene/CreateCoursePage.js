@@ -35,7 +35,7 @@ export default class CreateCoursePage extends Component {
           </Button>
         </div>
 
-        <ChainListBox/>
+        <ChainListBox />
         <Contentsection />
 
         <div className="spaceevenly mgt">
