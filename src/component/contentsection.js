@@ -7,7 +7,7 @@ export default function ContentSection() {
   };
   return (
     <div className="container" style={{ borderStyle: "solid" }}>
-      <form
+      <div
         style={{
           display: "flex",
           flexDirection: "column",
@@ -50,7 +50,7 @@ export default function ContentSection() {
             style={{ float: "left" }}
           />
         </row>
-      </form>
+      </div>
     </div>
   );
 }

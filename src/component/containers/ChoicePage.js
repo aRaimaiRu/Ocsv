@@ -2,33 +2,34 @@ import React, { Component } from "react";
 import Button from "@material-ui/core/Button";
 import Checkbox from "@material-ui/core/Checkbox";
 
-import createListRange from "../../utils";
+import { createListRange } from "../../utils";
 
-export default function ChoicePage() {
+export default function ChoicePage(props) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       <div style={{ margin: "auto" }}>
         <select value={1}>
-          <option> 1 </option>
-          <option> 2 </option>
+          {createListRange(props.listLength).map((c) => (
+            <option>{c}</option>
+          ))}
         </select>
         <input type="text"></input>
-        <Button
+        <button
           variant="contained"
           color="primary"
           href="/CreateCoursePage"
           style={{ marginLeft: "1em" }}
         >
           +
-        </Button>
-        <Button
+        </button>
+        <button
           variant="contained"
           color="primary"
           href="/CreateCoursePage"
           style={{ marginLeft: "1em" }}
         >
           -
-        </Button>
+        </button>
       </div>
     </div>
   );
