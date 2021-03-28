@@ -1,7 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
-import { act } from "react-dom/test-utils";
+
 import "./ChainListBox.css";
-import { randomInt } from "../utils";
 
 export default function ChainListBox(props) {
   const {
@@ -66,14 +65,4 @@ export default function ChainListBox(props) {
       </div>
     </div>
   );
-}
-
-{
-  /* <div class="col-md-4  vertical-divider">
-<label for="Topic">หัวข้อ1</label>
-<input type="text" id="Topic" className="text-input" />
-<div className="spaceevenly mgt">
-  <h2>&lt;</h2> <h2>&gt;</h2> <h2>+</h2> <h2>-</h2>
-</div>
-</div> */
 }
