@@ -13,7 +13,11 @@ export default function ChoicePage(props) {
             <option>{c}</option>
           ))}
         </select>
-        <input type="text"></input>
+        <input
+          type="text"
+          onChange={(e) => props.setNewContent(e.target.value, props.index)}
+          value={props.content}
+        ></input>
         <button
           variant="contained"
           color="primary"
@@ -27,6 +31,7 @@ export default function ChoicePage(props) {
           color="primary"
           href="/CreateCoursePage"
           style={{ marginLeft: "1em" }}
+          onClick={() => props.DeleteIndexChoice(props.index)}
         >
           -
         </button>
