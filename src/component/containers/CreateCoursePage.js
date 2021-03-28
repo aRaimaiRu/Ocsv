@@ -1,7 +1,7 @@
 import React, { Component, useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./CreateCoursePage.css";
-import Contentsection from "../contentsection";
+import ContentSection from "../ContentSection";
 import ChainListBox from "../ChainListBox";
 import { randomInt } from "../../utils";
 export default function CreateCoursePage() {
@@ -70,7 +70,7 @@ export default function CreateCoursePage() {
       </div>
 
       <ChainListBox allProps={allProps} />
-      <Contentsection />
+      <ContentSection />
 
       <div className="spaceevenly mgt">
         <Button variant="contained" color="primary" href="/QuestionPage">
