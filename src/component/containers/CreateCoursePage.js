@@ -5,6 +5,8 @@ import ContentSection from "../ContentSection";
 import ChainListBox from "../ChainListBox";
 import { randomInt } from "../../utils";
 export default function CreateCoursePage() {
+  const [grade, setGrade] = useState("");
+  const [module, setModule] = useState("");
   const [main, setMain] = useState([
     { id: 0, title: "main1" },
     { id: 1, title: "main2" },
@@ -84,6 +86,8 @@ export default function CreateCoursePage() {
           type="text"
           name="Grade"
           id="Grade"
+          value={grade}
+          onChange={(e) => setGrade(e.target.value)}
         />
       </div>
       <div className="mgt">
@@ -93,6 +97,8 @@ export default function CreateCoursePage() {
           type="text"
           name="Module"
           id="Module"
+          value={module}
+          onChange={(e) => setModule(e.target.value)}
         />
       </div>
 
