@@ -30,6 +30,8 @@ export default function CreateCoursePage() {
       contentType: "Content",
       Explain: "",
       outLink: "",
+      Answer: [],
+      Choice: [],
     },
     {
       id: 1,
@@ -38,6 +40,8 @@ export default function CreateCoursePage() {
       contentType: "Content",
       Explain: "",
       outLink: "",
+      Answer: [],
+      Choice: [],
     },
     {
       id: 2,
@@ -46,6 +50,8 @@ export default function CreateCoursePage() {
       contentType: "Content",
       Explain: "",
       outLink: "",
+      Answer: [],
+      Choice: [],
     },
     {
       id: 3,
@@ -54,6 +60,8 @@ export default function CreateCoursePage() {
       contentType: "Choiceตัวเลือกแบบมีลำดับ",
       Explain: "",
       outLink: "",
+      Answer: [],
+      Choice: [],
     },
   ]);
 
