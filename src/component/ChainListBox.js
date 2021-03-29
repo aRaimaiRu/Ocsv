@@ -15,6 +15,7 @@ export default function ChainListBox(props) {
     setselection1,
     selection2,
     setselection2,
+    setselection3,
   } = props.allProps;
 
   console.log(props, "!!!!");
@@ -57,7 +58,14 @@ export default function ChainListBox(props) {
           {content
             .filter((c) => c.sub == selection2)
             .map((c) => (
-              <div>{c.content}</div>
+              <div
+                onClick={() => {
+                  console.log(c.id);
+                  setselection3(c.id);
+                }}
+              >
+                {c.contentType}
+              </div>
             ))}
         </div>
         <button>+</button>

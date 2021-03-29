@@ -20,10 +20,13 @@ export default function CreateCoursePage() {
     { main: 1, title: "sub3", id: 2 },
   ]);
 
-  const [content, setContent] = useState([{ content: "abcd", sub: 0 }]);
+  const [content, setContent] = useState([
+    {id:0, content: "abcd", sub: 0, contentType: "Content" },
+  ]);
 
   const [selection1, setselection1] = useState(-1);
   const [selection2, setselection2] = useState(-1);
+  const [selection3, setselection3] = useState(-1);
 
   const allProps = {
     main,
@@ -37,6 +40,7 @@ export default function CreateCoursePage() {
     setselection1,
     selection2,
     setselection2,
+    setselection3
   };
 
   return (
@@ -74,7 +78,7 @@ export default function CreateCoursePage() {
 
       <div className="spaceevenly mgt">
         <Button variant="contained" color="primary" href="/QuestionPage">
-          รูปที่เคย Upload 
+          รูปที่เคย Upload
         </Button>
         <Button variant="contained" color="primary" href="/CreateCoursePage">
           upload รูป
