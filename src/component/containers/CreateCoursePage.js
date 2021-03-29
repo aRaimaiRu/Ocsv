@@ -21,7 +21,8 @@ export default function CreateCoursePage() {
   ]);
 
   const [content, setContent] = useState([
-    {id:0, content: "abcd", sub: 0, contentType: "Content" },
+    { id: 0, content: "abcd", sub: 0, contentType: "Content" },
+    { id: 1, content: "efgh", sub: 0, contentType: "Content" },
   ]);
 
   const [selection1, setselection1] = useState(-1);
@@ -40,7 +41,8 @@ export default function CreateCoursePage() {
     setselection1,
     selection2,
     setselection2,
-    setselection3
+    selection3,
+    setselection3,
   };
 
   return (

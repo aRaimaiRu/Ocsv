@@ -15,6 +15,7 @@ export default function ChainListBox(props) {
     setselection1,
     selection2,
     setselection2,
+    selection3,
     setselection3,
   } = props.allProps;
 
@@ -26,7 +27,7 @@ export default function ChainListBox(props) {
         <div class="mylistbox">
           {main.map((c, id) => (
             <div
-              class={selection1 == c.id ? "active" : ""}
+              className={selection1 == c.id ? "active" : ""}
               onClick={() => {
                 setselection1(c.id);
                 setselection2(-1);
@@ -46,7 +47,13 @@ export default function ChainListBox(props) {
           {sub
             .filter((c) => c.main == selection1)
             .map((c, id) => (
-              <div onClick={() => setselection2(c.id)}> {c.title} </div>
+              <div
+                className={selection2 == c.id ? "active" : ""}
+                onClick={() => setselection2(c.id)}
+              >
+                {" "}
+                {c.title}{" "}
+              </div>
             ))}
         </div>
         <button>+</button>
@@ -59,8 +66,8 @@ export default function ChainListBox(props) {
             .filter((c) => c.sub == selection2)
             .map((c) => (
               <div
+                className={selection3 == c.id ? "active" : ""}
                 onClick={() => {
-                  console.log(c.id);
                   setselection3(c.id);
                 }}
               >
