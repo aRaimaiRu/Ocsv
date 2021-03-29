@@ -31,7 +31,7 @@ export default function ChainListBox(props) {
               onClick={() => {
                 setselection1(c.id);
                 setselection2(-1);
-                console.log("Click", c);
+                setselection3(-1);
               }}
             >
               {c.title}
@@ -49,7 +49,9 @@ export default function ChainListBox(props) {
             .map((c, id) => (
               <div
                 className={selection2 == c.id ? "active" : ""}
-                onClick={() => setselection2(c.id)}
+                onClick={() => {
+                  setselection2(c.id), setselection3(-1);
+                }}
               >
                 {" "}
                 {c.title}{" "}

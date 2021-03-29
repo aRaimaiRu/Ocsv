@@ -77,7 +77,7 @@ export default function CreateCoursePage() {
       </div>
 
       <ChainListBox allProps={allProps} />
-      <ContentSection />
+      <ContentSection content={content} />
 
       <div className="spaceevenly mgt">
         <Button variant="contained" color="primary" href="/QuestionPage">
