@@ -119,14 +119,16 @@ export default function CreateCoursePage() {
         />
       )}
 
-      <div className="spaceevenly mgt">
-        <Button variant="contained" color="primary" href="/QuestionPage">
-          รูปที่เคย Upload
-        </Button>
-        <Button variant="contained" color="primary" href="/CreateCoursePage">
-          upload รูป
-        </Button>
-      </div>
+      {selection3 != -1 && (
+        <div className="spaceevenly mgt">
+          <Button variant="contained" color="primary" href="/QuestionPage">
+            รูปที่เคย Upload
+          </Button>
+          <Button variant="contained" color="primary" href="/CreateCoursePage">
+            upload รูป
+          </Button>
+        </div>
+      )}
     </>
   );
 }
