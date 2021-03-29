@@ -41,11 +41,6 @@ export default function ContentSection(props) {
         <label style={{ margin: "auto", fontSize: "2em" }}>
           {rendercontentType(content, props.selection3)}
         </label>
-        <input
-          type="text"
-          style={{ width: "20em", margin: "auto" }}
-          placeholder="content"
-        ></input>
         <textarea
           style={{ width: "100%" }}
           placeholder="html editor"
