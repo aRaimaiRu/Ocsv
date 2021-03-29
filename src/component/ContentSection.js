@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
 export default function ContentSection(props) {
   const [ChoiceList, setChoiceList] = useState([{ answer: 0, content: "" }]);
@@ -20,15 +20,8 @@ export default function ContentSection(props) {
     setChoiceList(ChoiceList.filter((c, i) => i != n));
   };
   const { content, setContent } = props.content;
-  console.log("ContentSection Start", content);
-
-  const rendercontentType = (content, selection3) => {
-    if (typeof content == "undefined" || selection3 == -1) {
-      return "Please Select ContentType";
-    } else {
-      return content.filter((c) => c.id == selection3)[0].contentType;
-    }
-  };
+  const mycontent = content.filter((c) => c.id == props.selection3)[0];
+  console.log(mycontent);
 
   return (
     <div className="container" style={{ borderStyle: "solid" }}>
@@ -39,61 +32,60 @@ export default function ContentSection(props) {
           textAlign: "center",
         }}
       >
-        {rendercontentType(content, props.selection3)}
+        {mycontent.contentType}
       </div>
-      {props.selection3 != -1 && (
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          <textarea
-            style={{ width: "100%" }}
-            placeholder="html editor"
-          ></textarea>
+      (
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
+        <textarea
+          style={{ width: "100%" }}
+          placeholder="html editor"
+        ></textarea>
 
-          {ChoiceList.map((c, index) => (
-            <ChoicePage
-              listLength={ChoiceList.length}
-              DeleteIndexChoice={DeleteIndexChoice}
-              index={index}
-              setNewContent={setNewContent}
-              content={c.content}
-            />
-          ))}
-          <div
-            onClick={CreateNewChoice}
-            style={{ display: "inline", margin: "auto" }}
-          >
-            Create
-          </div>
-          <row className="mgt">
-            <label style={{ float: "left", marginBottom: "0" }}>
-              อธิบายเฉลยเพิ่มเติม
-            </label>
-            <input
-              class="text-input "
-              type="text"
-              name="Explain"
-              id="Explain"
-              style={{ float: "left" }}
-            />
-          </row>
-          <row className="mgt">
-            <label style={{ float: "left", marginBottom: "0" }}>
-              Link เมืองนอก
-            </label>
-            <input
-              class="text-input "
-              type="text"
-              name="AditionalLink"
-              id="AditionalLink"
-              style={{ float: "left" }}
-            />
-          </row>
+        {ChoiceList.map((c, index) => (
+          <ChoicePage
+            listLength={ChoiceList.length}
+            DeleteIndexChoice={DeleteIndexChoice}
+            index={index}
+            setNewContent={setNewContent}
+            content={c.content}
+          />
+        ))}
+        <div
+          onClick={CreateNewChoice}
+          style={{ display: "inline", margin: "auto" }}
+        >
+          Create
         </div>
-      )}
+        <row className="mgt">
+          <label style={{ float: "left", marginBottom: "0" }}>
+            อธิบายเฉลยเพิ่มเติม
+          </label>
+          <input
+            class="text-input "
+            type="text"
+            name="Explain"
+            id="Explain"
+            style={{ float: "left" }}
+          />
+        </row>
+        <row className="mgt">
+          <label style={{ float: "left", marginBottom: "0" }}>
+            Link เมืองนอก
+          </label>
+          <input
+            class="text-input "
+            type="text"
+            name="AditionalLink"
+            id="AditionalLink"
+            style={{ float: "left" }}
+          />
+        </row>
+      </div>
     </div>
   );
 }

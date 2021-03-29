@@ -78,10 +78,12 @@ export default function CreateCoursePage() {
       </div>
 
       <ChainListBox allProps={allProps} />
-      <ContentSection
-        content={{ content, setContent }}
-        selection3={selection3}
-      />
+      {selection3 != -1 && (
+        <ContentSection
+          content={{ content, setContent }}
+          selection3={selection3}
+        />
+      )}
 
       <div className="spaceevenly mgt">
         <Button variant="contained" color="primary" href="/QuestionPage">
