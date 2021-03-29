@@ -21,10 +21,38 @@ export default function CreateCoursePage() {
   ]);
 
   const [content, setContent] = useState([
-    { id: 0, content: "abcd", sub: 0, contentType: "Content" },
-    { id: 1, content: "efgh", sub: 0, contentType: "Content" },
-    { id: 2, content: "efgh", sub: 1, contentType: "Content" },
-    { id: 3, content: "efgh", sub: 1, contentType: "Choiceตัวเลือกแบบมีลำดับ" },
+    {
+      id: 0,
+      content: "abcd",
+      sub: 0,
+      contentType: "Content",
+      Explain: "",
+      outLink: "",
+    },
+    {
+      id: 1,
+      content: "efgh",
+      sub: 0,
+      contentType: "Content",
+      Explain: "",
+      outLink: "",
+    },
+    {
+      id: 2,
+      content: "efgh",
+      sub: 1,
+      contentType: "Content",
+      Explain: "",
+      outLink: "",
+    },
+    {
+      id: 3,
+      content: "efgh",
+      sub: 1,
+      contentType: "Choiceตัวเลือกแบบมีลำดับ",
+      Explain: "",
+      outLink: "",
+    },
   ]);
 
   const [selection1, setselection1] = useState(-1);

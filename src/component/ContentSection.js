@@ -83,6 +83,10 @@ export default function ContentSection(props) {
             name="Explain"
             id="Explain"
             style={{ float: "left" }}
+            value={mycontent.Explain}
+            onChange={(e) =>
+              handleTextChange({ ...mycontent, Explain: e.target.value })
+            }
           />
         </row>
         <row className="mgt">
@@ -95,6 +99,10 @@ export default function ContentSection(props) {
             name="AditionalLink"
             id="AditionalLink"
             style={{ float: "left" }}
+            value={mycontent.outLink}
+            onChange={(e) =>
+              handleTextChange({ ...mycontent, outLink: e.target.value })
+            }
           />
         </row>
       </div>
