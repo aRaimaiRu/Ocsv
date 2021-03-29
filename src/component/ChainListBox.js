@@ -50,7 +50,8 @@ export default function ChainListBox(props) {
               <div
                 className={selection2 == c.id ? "active" : ""}
                 onClick={() => {
-                  setselection2(c.id), setselection3(-1);
+                  setselection2(c.id);
+                  setselection3(-1);
                 }}
               >
                 {" "}

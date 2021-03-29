@@ -24,6 +24,7 @@ export default function CreateCoursePage() {
     { id: 0, content: "abcd", sub: 0, contentType: "Content" },
     { id: 1, content: "efgh", sub: 0, contentType: "Content" },
     { id: 2, content: "efgh", sub: 1, contentType: "Content" },
+    { id: 3, content: "efgh", sub: 1, contentType: "Choiceตัวเลือกแบบมีลำดับ" },
   ]);
 
   const [selection1, setselection1] = useState(-1);
@@ -77,7 +78,10 @@ export default function CreateCoursePage() {
       </div>
 
       <ChainListBox allProps={allProps} />
-      <ContentSection content={content} />
+      <ContentSection
+        content={{ content, setContent }}
+        selection3={selection3}
+      />
 
       <div className="spaceevenly mgt">
         <Button variant="contained" color="primary" href="/QuestionPage">

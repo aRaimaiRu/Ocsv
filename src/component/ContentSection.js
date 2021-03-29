@@ -1,6 +1,6 @@
 import React, { Component, useState } from "react";
 import ChoicePage from "./containers/ChoicePage";
-export default function ContentSection() {
+export default function ContentSection(props) {
   const [ChoiceList, setChoiceList] = useState([{ answer: 0, content: "" }]);
   const CreateNewChoice = () => {
     setChoiceList([...ChoiceList, { answer: 0, content: "" }]);
@@ -19,6 +19,16 @@ export default function ContentSection() {
     console.log(ChoiceList);
     setChoiceList(ChoiceList.filter((c, i) => i != n));
   };
+  const { content, setContent } = props.content;
+  console.log("ContentSection Start", content);
+
+  const rendercontentType = (content, selection3) => {
+    if (typeof content == "undefined" || selection3 == -1) {
+      return "Please Select ContentType";
+    } else {
+      return content.filter((c) => c.id == selection3)[0].contentType;
+    }
+  };
 
   return (
     <div className="container" style={{ borderStyle: "solid" }}>
@@ -28,6 +38,9 @@ export default function ContentSection() {
           flexDirection: "column",
         }}
       >
+        <label style={{ margin: "auto", fontSize: "2em" }}>
+          {rendercontentType(content, props.selection3)}
+        </label>
         <input
           type="text"
           style={{ width: "20em", margin: "auto" }}
