@@ -37,7 +37,7 @@ export default function ContentSection() {
           style={{ width: "100%" }}
           placeholder="html editor"
         ></textarea>
-        <div onClick={CreateNewChoice}>Create</div>
+
         {ChoiceList.map((c, index) => (
           <ChoicePage
             listLength={ChoiceList.length}
@@ -47,6 +47,12 @@ export default function ContentSection() {
             content={c.content}
           />
         ))}
+        <div
+          onClick={CreateNewChoice}
+          style={{ display: "inline", margin: "auto" }}
+        >
+          Create
+        </div>
         <row className="mgt">
           <label style={{ float: "left", marginBottom: "0" }}>
             อธิบายเฉลยเพิ่มเติม
