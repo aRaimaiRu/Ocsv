@@ -6,7 +6,6 @@ export default function ContentSection(props) {
     setChoiceList([...ChoiceList, { answer: 0, content: "" }]);
   };
   const setNewContent = (content, n) => {
-    console.log(content);
     setChoiceList(
       ChoiceList.map((c, index) => {
         if (index == n) return { ...c, content: content };
@@ -21,13 +20,14 @@ export default function ContentSection(props) {
     setChoiceList(ChoiceList.filter((c, i) => i != n));
   };
   const { content, setContent } = props.content;
-  const mycontent = content.filter((c) => c.id == props.selection3)[0];
+  ///filter content id and shallowCopy
+  const mycontent = { ...content.filter((c) => c.id == props.selection3)[0] };
   console.log(mycontent);
 
-  const handleTextChange = (e) => {
+  const handleTextChange = (newcontent) => {
     setContent((prev) =>
       prev.map((c) => {
-        return c.id == mycontent.id ? { ...mycontent, content: e } : c;
+        return c.id == newcontent.id ? newcontent : c;
       })
     );
   };
@@ -53,7 +53,9 @@ export default function ContentSection(props) {
         <textarea
           style={{ width: "100%" }}
           value={mycontent.content}
-          onChange={(e) => handleTextChange(e.target.value)}
+          onChange={(e) =>
+            handleTextChange({ ...mycontent, content: e.target.value })
+          }
         ></textarea>
 
         {ChoiceList.map((c, index) => (
