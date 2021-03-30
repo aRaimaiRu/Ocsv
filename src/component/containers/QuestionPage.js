@@ -28,10 +28,6 @@ export default class QuestionPage extends Component {
             color="primary"
             href="/CreateCoursePage"
             style={{ marginLeft: "1em" }}
-            onClick={(e) => {
-              this.handleEntailmentRequest(e);
-              this.props.delete();
-            }}
           >
             -
           </Button>

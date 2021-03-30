@@ -1,28 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
 export default function ContentSection(props) {
-  const [ChoiceList, setChoiceList] = useState([{ answer: 0, content: "" }]);
-  const CreateNewChoice = () => {
-    setChoiceList([...ChoiceList, { answer: 0, content: "" }]);
-  };
-  const setNewContent = (content, n) => {
-    setChoiceList(
-      ChoiceList.map((c, index) => {
-        if (index == n) return { ...c, content: content };
-        else return c;
-      })
-    );
-  };
-
-  const DeleteIndexChoice = (n) => {
-    console.log("delte index", n);
-    console.log(ChoiceList);
-    setChoiceList(ChoiceList.filter((c, i) => i != n));
-  };
   const { content, setContent } = props.content;
   ///filter content id and shallowCopy
   const mycontent = { ...content.filter((c) => c.id == props.selection3)[0] };
-  console.log(mycontent);
 
   const handleTextChange = (newcontent) => {
     setContent((prev) =>
@@ -58,17 +39,29 @@ export default function ContentSection(props) {
           }
         ></textarea>
 
-        {ChoiceList.map((c, index) => (
+        {mycontent.Choice.map((c, index) => (
           <ChoicePage
-            listLength={ChoiceList.length}
-            DeleteIndexChoice={DeleteIndexChoice}
+            listLength={mycontent.Choice.length}
             index={index}
-            setNewContent={setNewContent}
-            content={c.content}
+            mycontent={mycontent}
+            handleTextChange={handleTextChange}
           />
         ))}
         <div
-          onClick={CreateNewChoice}
+          onClick={() => {
+            console.log(mycontent);
+            if (
+              mycontent.contentType === "Choiceแบบเลือกตอบ" &&
+              mycontent.Answer.length >= 1
+            ) {
+              mycontent.Choice.push("");
+              handleTextChange(mycontent);
+            } else {
+              mycontent.Choice.push("");
+              mycontent.Answer.push(-1);
+              handleTextChange(mycontent);
+            }
+          }}
           style={{ display: "inline", margin: "auto" }}
         >
           Create

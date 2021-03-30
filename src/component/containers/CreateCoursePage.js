@@ -47,7 +47,7 @@ export default function CreateCoursePage() {
       id: 2,
       content: "efgh",
       sub: 1,
-      contentType: "Content",
+      contentType: "Choiceแบบเลือกตอบ",
       Explain: "",
       outLink: "",
       Answer: [],
