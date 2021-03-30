@@ -37,7 +37,7 @@ export default function CreateCoursePage() {
       id: 1,
       content: "efgh",
       sub: 0,
-      contentType: "หัวข้อคำถาม",
+      contentType: "Content",
       Explain: "",
       outLink: "",
       Answer: [],
