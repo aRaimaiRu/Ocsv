@@ -1,8 +1,24 @@
 import React, { Component, useState, useEffect } from "react";
-
+import Modal from "@material-ui/core/Modal";
 import "./ChainListBox.css";
+import { makeStyles } from "@material-ui/core/styles";
 
+const useStyles = makeStyles((theme) => ({
+  paper: {
+    position: "absolute",
+    width: 400,
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3),
+  },
+}));
 export default function ChainListBox(props) {
+  ////style
+  const classes = useStyles();
+  // getModalStyle is not a pure function, we roll the style only on the first render
+
+  ///style
   const {
     main,
     setMain,
@@ -20,6 +36,24 @@ export default function ChainListBox(props) {
   } = props.allProps;
 
   console.log(props, "!!!!");
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
+
+  const modalbody = (
+    <div id="modalDiv" className={classes.paper}>
+      <h2 id="simple-modal-title">Text in a modal</h2>
+      <p id="simple-modal-description">
+        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
+      </p>
+    </div>
+  );
 
   return (
     <div class="row row-flex mgt">
@@ -37,8 +71,16 @@ export default function ChainListBox(props) {
               {c.title}
             </div>
           ))}
-          <button onClick={createMain}>+</button>
+          <button onClick={handleOpen}>+</button>
           <button>-</button>
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            {modalbody}
+          </Modal>
         </div>
       </div>
 

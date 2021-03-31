@@ -4,6 +4,7 @@ import "./CreateCoursePage.css";
 import ContentSection from "../ContentSection";
 import ChainListBox from "../ChainListBox";
 import { randomInt } from "../../utils";
+
 export default function CreateCoursePage() {
   const [grade, setGrade] = useState("");
   const [module, setModule] = useState("");

@@ -1,3 +1,9 @@
+#modalDiv {
+  top: 52%;
+  left: 49%;
+  transform: translate(-52%, -49%);
+}
+
 .mylistbox {
   max-height: 150px;
   overflow: auto;
