@@ -2,7 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import Modal from "@material-ui/core/Modal";
 import "./ChainListBox.css";
 import { makeStyles } from "@material-ui/core/styles";
-
+import { randomInt } from "../utils";
 const useStyles = makeStyles((theme) => ({
   paper: {
     position: "absolute",
@@ -36,22 +36,38 @@ export default function ChainListBox(props) {
   } = props.allProps;
 
   console.log(props, "!!!!");
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
+  const [modalInput, setModalInput] = useState({ id: randomInt(), title: "" });
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
+    setModalInput({ id: randomInt(), title: "" });
     setOpen(false);
+  };
+
+  const handleModalInput = (value) => {
+    console.log(modalInput);
+    setModalInput({ ...modalInput, title: value });
   };
 
   const modalbody = (
     <div id="modalDiv" className={classes.paper}>
       <h2 id="simple-modal-title">Text in a modal</h2>
-      <p id="simple-modal-description">
-        Duis mollis, est non commodo luctus, nisi erat porttitor ligula.
-      </p>
+      <input
+        value={modalInput.title}
+        onChange={(e) => handleModalInput(e.target.value)}
+      ></input>
+      <button
+        onClick={() => {
+          setMain((prev) => [...prev, modalInput]);
+          handleClose();
+        }}
+      >
+        Save to MainTopic
+      </button>
     </div>
   );
 
