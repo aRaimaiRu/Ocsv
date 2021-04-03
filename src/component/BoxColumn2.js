@@ -22,7 +22,7 @@ export default function BoxColumn2({
     title: "",
     main: selection1,
   });
-  console.log("start", selection1);
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
@@ -34,7 +34,7 @@ export default function BoxColumn2({
     setOpen(false);
   };
   const handleModalInput = (value) => {
-    console.log(modalInput);
+    //console.log(modalInput);
     setModalInput({ ...modalInput, title: value.target.value });
   };
 
@@ -56,7 +56,7 @@ export default function BoxColumn2({
     setSub((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
   };
 
-  console.log(sub, selection1);
+  //console.log(sub, selection1);
 
   return (
     <div class="col-md-4  vertical-divider">
@@ -87,7 +87,7 @@ export default function BoxColumn2({
               </button>
             </div>
           ))}
-        {console.log("selection1=", selection1)}
+
         <button onClick={handleOpen}>+</button>
         <button onClick={() => deletesub(selection2)}>-</button>
         <Modal
