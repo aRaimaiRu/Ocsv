@@ -4,6 +4,7 @@ import "./ChainListBox.css";
 import { makeStyles } from "@material-ui/core/styles";
 import { randomInt } from "../utils";
 import ModalBody from "./ModalBody";
+import { map } from "jquery";
 export default function BoxColumn1({
   box1props: {
     main,
@@ -31,8 +32,10 @@ export default function BoxColumn1({
     setModalInput({ ...modalInput, title: value.target.value });
   };
 
-  const createNewMain = () => {
-    setMain((prev) => [...prev, modalInput]);
+  const createNewMain = (modalInput) => {
+    const index = main.findIndex((obj) => modalInput.id == obj.id)
+    
+    setMain((prev) => index==-1? [...prev, modalInput]:prev.map(j=>j.id==modalInput.id?modalInput:j));
     handleClose();
   };
 
@@ -43,19 +46,24 @@ export default function BoxColumn1({
           <div
             style={{ display: "flex", justifyContent: "space-between" }}
             className={selection1 == c.id ? "active" : ""}
-            onClick={() => {
-              setselection1(c.id);
-              setselection2(-1);
-              setselection3(-1);
-            }}
           >
-            {c.title}
+            <div
+              style={{ width: "100%" }}
+              onClick={() => {
+                setselection1(c.id);
+                setselection2(-1);
+                setselection3(-1);
+              }}
+            >
+              {c.title}
+            </div>
             <button
-              onclick={() => {
+              onClick={() => {
+                setModalInput(c);
                 handleOpen();
               }}
             >
-              edit
+              Edit
             </button>
           </div>
         ))}
@@ -71,7 +79,7 @@ export default function BoxColumn1({
             title="Main Topic"
             inputValue={modalInput.title}
             handleChange={handleModalInput}
-            onClickFunction={createNewMain}
+            onClickFunction={() => createNewMain(modalInput)}
           />
         </Modal>
       </div>
