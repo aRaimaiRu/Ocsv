@@ -1,7 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import "./ChainListBox.css";
 import BoxColumn1 from "./BoxColumn1";
-
+import BoxColumn2 from "./BoxColumn2";
 export default function ChainListBox({
   allProps: {
     main,
@@ -31,30 +31,20 @@ export default function ChainListBox({
   };
   console.log(main);
 
+  const listBox2Props = {
+    sub,
+    setSub,
+    selection1,
+    selection2,
+    setselection2,
+    setselection3,
+  };
+
   return (
     <div class="row row-flex mgt">
       <BoxColumn1 box1props={listBox1Props} />
 
-      <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
-          {sub
-            .filter((c) => c.main == selection1)
-            .map((c, id) => (
-              <div
-                className={selection2 == c.id ? "active" : ""}
-                onClick={() => {
-                  setselection2(c.id);
-                  setselection3(-1);
-                }}
-              >
-                {" "}
-                {c.title}{" "}
-              </div>
-            ))}
-        </div>
-        <button>+</button>
-        <button>-</button>
-      </div>
+      <BoxColumn2 box1props={listBox2Props} />
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
