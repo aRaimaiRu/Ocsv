@@ -1,25 +1,9 @@
 import React, { Component, useState, useEffect } from "react";
-import Modal from "@material-ui/core/Modal";
 import "./ChainListBox.css";
-import { makeStyles } from "@material-ui/core/styles";
-import { randomInt } from "../utils";
-const useStyles = makeStyles((theme) => ({
-  paper: {
-    position: "absolute",
-    width: 400,
-    backgroundColor: theme.palette.background.paper,
-    border: "2px solid #000",
-    boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
-  },
-}));
-export default function ChainListBox(props) {
-  ////style
-  const classes = useStyles();
-  // getModalStyle is not a pure function, we roll the style only on the first render
+import BoxColumn1 from "./BoxColumn1";
 
-  ///style
-  const {
+export default function ChainListBox({
+  allProps: {
     main,
     setMain,
     createMain,
@@ -33,72 +17,23 @@ export default function ChainListBox(props) {
     setselection2,
     selection3,
     setselection3,
-  } = props.allProps;
-
-  console.log(props, "!!!!");
-  const [open, setOpen] = useState(false);
-  const [modalInput, setModalInput] = useState({ id: randomInt(), title: "" });
-
-  const handleOpen = () => {
-    setOpen(true);
+  },
+}) {
+  const listBox1Props = {
+    main,
+    setMain,
+    selection1,
+    setselection1,
+    selection2,
+    setselection2,
+    selection3,
+    setselection3,
   };
-
-  const handleClose = () => {
-    setModalInput({ id: randomInt(), title: "" });
-    setOpen(false);
-  };
-
-  const handleModalInput = (value) => {
-    console.log(modalInput);
-    setModalInput({ ...modalInput, title: value });
-  };
-
-  const modalbody = (
-    <div id="modalDiv" className={classes.paper}>
-      <h2 id="simple-modal-title">Text in a modal</h2>
-      <input
-        value={modalInput.title}
-        onChange={(e) => handleModalInput(e.target.value)}
-      ></input>
-      <button
-        onClick={() => {
-          setMain((prev) => [...prev, modalInput]);
-          handleClose();
-        }}
-      >
-        Save to MainTopic
-      </button>
-    </div>
-  );
+  console.log(main);
 
   return (
     <div class="row row-flex mgt">
-      <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
-          {main.map((c, id) => (
-            <div
-              className={selection1 == c.id ? "active" : ""}
-              onClick={() => {
-                setselection1(c.id);
-                setselection2(-1);
-                setselection3(-1);
-              }}
-            >
-              {c.title}
-            </div>
-          ))}
-          <button onClick={handleOpen}>+</button>
-          <button>-</button>
-          <Modal
-            open={open}
-            onClose={handleClose}
-            aria-labelledby="simple-modal-title"
-            aria-describedby="simple-modal-description"
-          >
-            {modalbody}
-          </Modal>
-        </div>
-      </div>
+      <BoxColumn1 box1props={listBox1Props} />
 
       <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
