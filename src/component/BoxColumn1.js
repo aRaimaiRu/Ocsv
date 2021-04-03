@@ -33,10 +33,20 @@ export default function BoxColumn1({
   };
 
   const createNewMain = (modalInput) => {
-    const index = main.findIndex((obj) => modalInput.id == obj.id)
-    
-    setMain((prev) => index==-1? [...prev, modalInput]:prev.map(j=>j.id==modalInput.id?modalInput:j));
+    const index = main.findIndex((obj) => modalInput.id == obj.id);
+    setMain((prev) =>
+      index == -1
+        ? [...prev, modalInput]
+        : prev.map((j) => (j.id == modalInput.id ? modalInput : j))
+    );
     handleClose();
+  };
+
+  const deleteMain = (select) => {
+    const index = main.findIndex((obj) => select == obj.id);
+    let bufferArray = [...main];
+    bufferArray.splice(index, 1);
+    setMain((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
   };
 
   return (
@@ -68,7 +78,7 @@ export default function BoxColumn1({
           </div>
         ))}
         <button onClick={handleOpen}>+</button>
-        <button>-</button>
+        <button onClick={() => deleteMain(selection1)}>-</button>
         <Modal
           open={open}
           onClose={handleClose}
