@@ -1,4 +1,4 @@
-import React, { Component, useState } from "react";
+import React, { Component, useEffect, useState } from "react";
 import Button from "@material-ui/core/Button";
 import "./CreateCoursePage.css";
 import ContentSection from "../ContentSection";

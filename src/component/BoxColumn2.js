@@ -55,8 +55,15 @@ export default function BoxColumn2({
     bufferArray.splice(index, 1);
     setSub((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
   };
-
-  //console.log(sub, selection1);
+  useEffect(
+    () =>
+      setModalInput({
+        id: randomInt(),
+        title: "",
+        main: selection1,
+      }),
+    [open]
+  );
 
   return (
     <div class="col-md-4  vertical-divider">
