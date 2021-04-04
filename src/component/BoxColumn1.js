@@ -87,10 +87,10 @@ export default function BoxColumn1({
         >
           <ModalBody
             title="Main Topic"
-            inputValue={modalInput.title}
-            handleChange={handleModalInput}
             onClickFunction={() => createNewMain(modalInput)}
-          />
+          >
+            <input value={modalInput.title} onChange={handleModalInput}></input>
+          </ModalBody>
         </Modal>
       </div>
     </div>

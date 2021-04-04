@@ -20,7 +20,7 @@ export default function ModalBody(props) {
   return (
     <div id="modalDiv" className={classes.MyModalBox}>
       <h2 id="simple-modal-title">{props.title}</h2>
-      <input value={props.inputValue} onChange={props.handleChange}></input>
+      {props.children}
       <button onClick={props.onClickFunction}>Save</button>
     </div>
   );

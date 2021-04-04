@@ -104,10 +104,10 @@ export default function BoxColumn2({
         >
           <ModalBody
             title="sub Topic"
-            inputValue={modalInput.title}
-            handleChange={handleModalInput}
             onClickFunction={() => createNewsub(modalInput)}
-          />
+          >
+            <input value={modalInput.title} onChange={handleModalInput}></input>
+          </ModalBody>
         </Modal>
       </div>
     </div>
