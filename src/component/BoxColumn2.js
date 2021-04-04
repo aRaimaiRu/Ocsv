@@ -26,8 +26,9 @@ export default function BoxColumn2({
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    if (selection1 != -1)
-    {setOpen(true);}
+    if (selection1 != -1) {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {
@@ -85,8 +86,8 @@ export default function BoxColumn2({
               </div>
               <button
                 onClick={() => {
-                  setModalInput(c);
                   handleOpen();
+                  setModalInput(c);
                 }}
               >
                 Edit
