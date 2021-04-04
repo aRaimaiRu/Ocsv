@@ -40,10 +40,21 @@ export default function ChainListBox({
     setselection2,
     setselection3,
   };
-+
-  const listBox3Props = {
 
-  }
+  const listBox3Props = {
+    main,
+    setMain,
+    sub,
+    setSub,
+    content,
+    setContent,
+    selection1,
+    selection2,
+    selection3,
+    setselection1,
+    setselection2,
+    setselection3,
+  };
 
   return (
     <div class="row row-flex mgt">
@@ -52,7 +63,6 @@ export default function ChainListBox({
       <BoxColumn2 box2props={listBox2Props} />
 
       <BoxColumn3 box3props={listBox3Props} />
-
 
       {/* <div class="col-md-4  vertical-divider">
         <div class="mylistbox">

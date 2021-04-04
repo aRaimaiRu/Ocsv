@@ -46,7 +46,7 @@ export default function BoxColumn1({
     const index = main.findIndex((obj) => select == obj.id);
     let bufferArray = [...main];
     bufferArray.splice(index, 1);
-    setMain((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
+    setMain((prev) => (index == -1 ? prev : bufferArray));
     setselection1(-1);
     setselection2(-1);
     setselection3(-1);
