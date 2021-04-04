@@ -25,7 +25,7 @@ export default function BoxColumn3({
     id: randomInt(),
     content: "",
     sub: selection2,
-    contentType: "",
+    contentType: "Content",
     Explain: "",
     outLink: "",
     Answer: [],
@@ -43,7 +43,7 @@ export default function BoxColumn3({
       id: randomInt(),
       content: "",
       sub: selection2,
-      contentType: "",
+      contentType: "Content",
       Explain: "",
       outLink: "",
       Answer: [],
@@ -54,12 +54,13 @@ export default function BoxColumn3({
   const handleModalInput = (value) => {
     //console.log(modalInput);
     setModalInput({ ...modalInput, contentType: value.target.value });
+    console.log("BoxColumn3", value.target.value);
   };
 
   const createNewsub = (modalInput) => {
     console.log("modalInpit =", modalInput);
     const index = content.findIndex((obj) => modalInput.id == obj.id);
-    setSub((prev) =>
+    setContent((prev) =>
       index == -1
         ? [...prev, modalInput]
         : prev.map((j) => (j.id == modalInput.id ? modalInput : j))
@@ -77,7 +78,7 @@ export default function BoxColumn3({
         id: randomInt(),
         content: "",
         sub: selection2,
-        contentType: "",
+        contentType: "Content",
         Explain: "",
         outLink: "",
         Answer: [],
@@ -130,7 +131,16 @@ export default function BoxColumn3({
             inputValue={modalInput.title}
             handleChange={handleModalInput}
             onClickFunction={() => createNewsub(modalInput)}
-          />
+          >
+            <select value={modalInput.contentType} onChange={handleModalInput}>
+              <option value="Content">Content</option>
+              <option value="หัวข้อคำถาม">หัวข้อคำถาม</option>
+              <option value="Choiceแบบเลือกตอบ">Choiceแบบเลือกตอบ</option>
+              <option value="Choiceตัวเลือกแบบมีลำดับ">
+                Choiceตัวเลือกแบบมีลำดับ
+              </option>
+            </select>
+          </ModalBody>
         </Modal>
       </div>
     </div>
