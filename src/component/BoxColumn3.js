@@ -35,7 +35,9 @@ export default function BoxColumn3({
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
+    if (selection1 != -1) {
+      setOpen(true);
+    }
   };
 
   const handleClose = () => {

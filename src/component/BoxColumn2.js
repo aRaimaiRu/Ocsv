@@ -26,7 +26,8 @@ export default function BoxColumn2({
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    setOpen(true);
+    if (selection1 != -1)
+    {setOpen(true);}
   };
 
   const handleClose = () => {
@@ -39,7 +40,6 @@ export default function BoxColumn2({
   };
 
   const createNewsub = (modalInput) => {
-    console.log("modalInpit =", modalInput);
     const index = sub.findIndex((obj) => modalInput.id == obj.id);
     setSub((prev) =>
       index == -1
