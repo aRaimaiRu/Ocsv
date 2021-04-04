@@ -68,11 +68,8 @@ export default function BoxColumn3({
   };
 
   const deletesub = (select) => {
-    console.log(select, content);
-    const index = content.findIndex((obj) => select == obj.id);
-    let bufferArray = [...content];
-    bufferArray.splice(index, 1);
-    setContent((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
+    setselection3(-1);
+    setContent((prev) => prev.filter((k) => k.id != select));
   };
   useEffect(
     () =>
@@ -92,6 +89,7 @@ export default function BoxColumn3({
   return (
     <div class="col-md-4  vertical-divider">
       <div class="mylistbox">
+        {console.log("renderBox3", content)}
         {content
           .filter((j) => j.sub == selection2)
           .map((c, id) => (
