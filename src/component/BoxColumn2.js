@@ -50,11 +50,14 @@ export default function BoxColumn2({
   };
 
   const deletesub = (select) => {
-    const index = sub.findIndex((obj) => select == obj.id);
-    let bufferArray = [...sub];
-    console.log(index, "index");
-    bufferArray.splice(index, 1);
-    setSub((prev) => (index == -1 ? prev : bufferArray));
+    // const index = sub.findIndex((obj) => select == obj.id);
+    // let bufferArray = [...sub];
+    // console.log(index, "index");
+    // bufferArray.splice(index, 1);
+    // setSub((prev) => (index == -1 ? prev : bufferArray));
+    setSub((prev) => prev.filter((k) => k.id != select));
+    setselection2(-1);
+    setselection3(-1);
   };
   useEffect(
     () =>

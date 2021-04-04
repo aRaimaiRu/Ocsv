@@ -43,10 +43,11 @@ export default function BoxColumn1({
   };
 
   const deleteMain = (select) => {
-    const index = main.findIndex((obj) => select == obj.id);
-    let bufferArray = [...main];
-    bufferArray.splice(index, 1);
-    setMain((prev) => (index == -1 ? prev : bufferArray));
+    // const index = main.findIndex((obj) => select == obj.id);
+    // let bufferArray = [...main];
+    // bufferArray.splice(index, 1);
+    // setMain((prev) => (index == -1 ? prev : bufferArray));
+    setMain((prev) => prev.filter((k) => k.id != select));
     setselection1(-1);
     setselection2(-1);
     setselection3(-1);
