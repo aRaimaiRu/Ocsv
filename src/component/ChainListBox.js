@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import "./ChainListBox.css";
 import BoxColumn1 from "./BoxColumn1";
 import BoxColumn2 from "./BoxColumn2";
+import BoxColumn3 from "./BoxColumn3";
 export default function ChainListBox({
   allProps: {
     main,
@@ -39,14 +40,21 @@ export default function ChainListBox({
     setselection2,
     setselection3,
   };
++
+  const listBox3Props = {
+
+  }
 
   return (
     <div class="row row-flex mgt">
       <BoxColumn1 box1props={listBox1Props} />
 
-      <BoxColumn2 box1props={listBox2Props} />
+      <BoxColumn2 box2props={listBox2Props} />
 
-      <div class="col-md-4  vertical-divider">
+      <BoxColumn3 box3props={listBox3Props} />
+
+
+      {/* <div class="col-md-4  vertical-divider">
         <div class="mylistbox">
           {content
             .filter((c) => c.sub == selection2)
@@ -63,7 +71,7 @@ export default function ChainListBox({
         </div>
         <button>+</button>
         <button>-</button>
-      </div>
+      </div> */}
     </div>
   );
 }

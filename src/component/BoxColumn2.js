@@ -6,7 +6,7 @@ import { randomInt } from "../utils";
 import ModalBody from "./ModalBody";
 import { map } from "jquery";
 export default function BoxColumn2({
-  box1props: {
+  box2props: {
     sub,
     setSub,
     selection1,
@@ -64,6 +64,7 @@ export default function BoxColumn2({
       }),
     [open]
   );
+    
 
   return (
     <div class="col-md-4  vertical-divider">

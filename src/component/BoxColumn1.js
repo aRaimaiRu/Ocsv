@@ -47,6 +47,9 @@ export default function BoxColumn1({
     let bufferArray = [...main];
     bufferArray.splice(index, 1);
     setMain((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
+    setselection1(-1);
+    setselection2(-1);
+    setselection3(-1);
   };
 
   return (
