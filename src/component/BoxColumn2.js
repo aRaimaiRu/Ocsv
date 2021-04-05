@@ -56,16 +56,6 @@ export default function BoxColumn2({
     setSub((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
   };
 
-  const CreateEdit = (c) => {
-    if (c == -1)
-      setModalInput({
-        id: randomInt(),
-        title: "",
-        main: selection1,
-      });
-    else setModalInput(c);
-  };
-
   useEffect(() => {
     if (isEdit == false)
       setModalInput({
