@@ -24,7 +24,7 @@ export default function BoxColumn2({
   });
 
   const [open, setOpen] = useState(false);
-
+  const [isEdit, setIsEdit] = useState(false);
   const handleOpen = () => {
     if (selection1 != -1) {
       setOpen(true);
@@ -55,8 +55,9 @@ export default function BoxColumn2({
     setselection2(-1);
     setselection3(-1);
   };
-  useEffect(
-    () =>
+
+  useEffect(() => {
+    if (isEdit == false)
       setModalInput({
         id: randomInt(),
         title: "",
@@ -78,6 +79,7 @@ export default function BoxColumn2({
               <div
                 style={{ width: "100%" }}
                 onClick={() => {
+                  setIsEdit(false);
                   setselection2(c.id);
                   setselection3(-1);
                 }}
@@ -86,6 +88,11 @@ export default function BoxColumn2({
               </div>
               <button
                 onClick={() => {
+<<<<<<< HEAD
+=======
+                  setIsEdit(true);
+                  setModalInput(c);
+>>>>>>> 5b7fdadd89277ac5cfe50eda63d674e9b56bc408
                   handleOpen();
                   setModalInput(c);
                 }}
