@@ -88,11 +88,6 @@ export default function BoxColumn2({
               </div>
               <button
                 onClick={() => {
-<<<<<<< HEAD
-=======
-                  setIsEdit(true);
-                  setModalInput(c);
->>>>>>> 5b7fdadd89277ac5cfe50eda63d674e9b56bc408
                   handleOpen();
                   setModalInput(c);
                 }}
