@@ -62,7 +62,7 @@ export default function BoxColumn2({
         title: "",
         main: selection1,
       }),
-    [open]
+    [selection1]
   );
 
   return (

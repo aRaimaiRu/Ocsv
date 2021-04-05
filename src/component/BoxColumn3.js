@@ -86,7 +86,7 @@ export default function BoxColumn3({
         Answer: [],
         Choice: [],
       }),
-    [open]
+    [selection2]
   );
 
   return (
