@@ -24,7 +24,7 @@ export default function BoxColumn2({
   });
 
   const [open, setOpen] = useState(false);
-
+  const [isEdit, setIsEdit] = useState(false);
   const handleOpen = () => {
     setOpen(true);
   };
@@ -55,15 +55,25 @@ export default function BoxColumn2({
     bufferArray.splice(index, 1);
     setSub((prev) => (index == -1 ? [...prev, modalInput] : bufferArray));
   };
-  useEffect(
-    () =>
+
+  const CreateEdit = (c) => {
+    if (c == -1)
       setModalInput({
         id: randomInt(),
         title: "",
         main: selection1,
-      }),
-    [open]
-  );
+      });
+    else setModalInput(c);
+  };
+
+  useEffect(() => {
+    if (isEdit == false)
+      setModalInput({
+        id: randomInt(),
+        title: "",
+        main: selection1,
+      });
+  }, [open]);
 
   return (
     <div class="col-md-4  vertical-divider">
@@ -78,6 +88,7 @@ export default function BoxColumn2({
               <div
                 style={{ width: "100%" }}
                 onClick={() => {
+                  setIsEdit(false);
                   setselection2(c.id);
                   setselection3(-1);
                 }}
@@ -86,6 +97,7 @@ export default function BoxColumn2({
               </div>
               <button
                 onClick={() => {
+                  setIsEdit(true);
                   setModalInput(c);
                   handleOpen();
                 }}
