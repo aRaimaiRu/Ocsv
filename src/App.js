@@ -4,7 +4,7 @@ import CoursePage from "./component/containers/CoursePage";
 import CreateCoursePage from "./component/containers/CreateCoursePage";
 import ChoicePage from "./component/containers/ChoicePage";
 import QuestionPage from "./component/containers/QuestionPage";
-import ShowImage from "./component/containers/ShowImagePage";
+import ShowImagePage from "./component/containers/ShowImagePage";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 function App() {
@@ -25,8 +25,8 @@ function App() {
           <Route path="/ChoicePage">
             <ChoicePage />
           </Route>
-          <Route path="/ShowImage">
-            <ShowImage />
+          <Route path="/ShowImagePage">
+            <ShowImagePage />
           </Route>
         </Switch>
       </Container>
