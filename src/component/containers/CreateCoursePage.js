@@ -34,7 +34,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
-      Picture:[],
+      Picture: [],
     },
     {
       id: 1,
@@ -45,7 +45,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
-      Picture:[],
+      Picture: [],
     },
     {
       id: 2,
@@ -56,7 +56,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
-      Picture:[],
+      Picture: [],
     },
     {
       id: 3,
@@ -67,7 +67,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
-      Picture:[],
+      Picture: [],
     },
   ]);
 
@@ -92,12 +92,24 @@ export default function CreateCoursePage() {
   };
 
   const [open, setOpen] = useState(false);
-  const handleClose = ()=>{
-    setOpen(false)
-  }
-  const handleOpen = ()=>{
-    setOpen(true)
-  }
+  const handleClose = () => {
+    setOpen(false);
+  };
+  const handleOpen = () => {
+    setOpen(true);
+  };
+  const [bufferPicture, setBufferPicture] = useState("");
+  const handleBufferPicture = (v) => {
+    setBufferPicture(v.target.value);
+  };
+
+  const addNewPicture = (p) => {
+    setContent((prev) =>
+      prev.map((obj) =>
+        obj.id != selection3 ? obj : { ...obj, Picture: [...obj.Picture, p] }
+      )
+    );
+  };
 
   return (
     <>
@@ -149,12 +161,29 @@ export default function CreateCoursePage() {
           <Button
             variant="contained"
             color="primary"
-            onClick={() => console.log("click button")}
+            onClick={() => handleOpen()}
           >
             upload รูป
           </Button>
-
-          
+          <Modal
+            open={open}
+            onClose={handleClose}
+            aria-labelledby="simple-modal-title"
+            aria-describedby="simple-modal-description"
+          >
+            <ModalBody
+              title="Upload รูป"
+              onClickFunction={() => {
+                addNewPicture(bufferPicture);
+                handleClose();
+              }}
+            >
+              <input
+                value={bufferPicture}
+                onChange={handleBufferPicture}
+              ></input>
+            </ModalBody>
+          </Modal>
         </div>
       )}
     </>
