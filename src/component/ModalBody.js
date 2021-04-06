@@ -8,11 +8,12 @@ const useStyles = makeStyles((theme) => ({
     left: "49%",
     transform: "translate(-52%, -49%)",
     position: "absolute",
-    width: 400,
+    width: 1000,
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
     padding: theme.spacing(2, 4, 3),
+    overflow: "auto",
   },
 }));
 export default function ModalBody(props) {

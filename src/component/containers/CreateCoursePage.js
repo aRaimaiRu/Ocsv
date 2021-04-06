@@ -92,12 +92,22 @@ export default function CreateCoursePage() {
   };
 
   const [open, setOpen] = useState(false);
+  const [showPicture, setShowPicture] = useState(true);
   const handleClose = () => {
     setOpen(false);
   };
   const handleOpen = () => {
     setOpen(true);
   };
+
+  const handleShowPicture = () => {
+    setShowPicture(true);
+  };
+
+  const handleNotShowPicture = () => {
+    setShowPicture(false);
+  };
+
   const [bufferPicture, setBufferPicture] = useState("");
   const handleBufferPicture = (v) => {
     setBufferPicture(v.target.value);
@@ -107,6 +117,15 @@ export default function CreateCoursePage() {
     setContent((prev) =>
       prev.map((obj) =>
         obj.id != selection3 ? obj : { ...obj, Picture: [...obj.Picture, p] }
+      )
+    );
+  };
+  const handleDeletePicture = (url) => {
+    setContent((prev) =>
+      prev.map((obj) =>
+        obj.id != selection3
+          ? obj
+          : { ...obj, Picture: obj.Picture.filter((f) => f != url) }
       )
     );
   };
@@ -155,13 +174,24 @@ export default function CreateCoursePage() {
 
       {selection3 != -1 && (
         <div className="spaceevenly mgt">
-          <Button variant="contained" color="primary" href="/ShowImagePage">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => {
+              console.log("click showPicture", showPicture);
+              handleShowPicture();
+              handleOpen();
+            }}
+          >
             รูปที่เคย Upload
           </Button>
           <Button
             variant="contained"
             color="primary"
-            onClick={() => handleOpen()}
+            onClick={() => {
+              handleNotShowPicture();
+              handleOpen();
+            }}
           >
             upload รูป
           </Button>
@@ -171,18 +201,50 @@ export default function CreateCoursePage() {
             aria-labelledby="simple-modal-title"
             aria-describedby="simple-modal-description"
           >
-            <ModalBody
-              title="Upload รูป"
-              onClickFunction={() => {
-                addNewPicture(bufferPicture);
-                handleClose();
-              }}
-            >
-              <input
-                value={bufferPicture}
-                onChange={handleBufferPicture}
-              ></input>
-            </ModalBody>
+            {showPicture === false ? (
+              <ModalBody
+                title="Upload รูป"
+                onClickFunction={() => {
+                  addNewPicture(bufferPicture);
+                  handleClose();
+                }}
+              >
+                <input
+                  value={bufferPicture}
+                  onChange={handleBufferPicture}
+                ></input>
+              </ModalBody>
+            ) : (
+              <ModalBody
+                title="รูปที่เคย Upload"
+                onClickFunction={() => {
+                  addNewPicture(bufferPicture);
+                  handleClose();
+                }}
+              >
+                <div className="tiles">
+                  {content
+                    .find((f) => f.id === selection3)
+                    .Picture.map((c) => (
+                      <div>
+                        <button
+                          style={{
+                            position: "absolute",
+                            zIndex: "1",
+                            right: "60px",
+                          }}
+                          onClick={() => {
+                            handleDeletePicture(c);
+                          }}
+                        >
+                          <span>&times;</span>
+                        </button>
+                        <img src={c} alt={c} style={{ width: "800px" }} />
+                      </div>
+                    ))}
+                </div>
+              </ModalBody>
+            )}
           </Modal>
         </div>
       )}

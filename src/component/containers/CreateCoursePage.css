@@ -30,3 +30,27 @@ form {
   margin-right: auto;
   display: inline-block;
 }
+.tiles {
+  height: 1000px;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  position: relative;
+  overflow: auto;
+}
+.tile {
+  margin: 15px;
+  cursor: pointer;
+  overflow: hidden;
+  width: 18vw;
+  height: 18vw;
+  img {
+    width: 100%;
+    position: relative;
+    transition: transform 500ms ease;
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}
