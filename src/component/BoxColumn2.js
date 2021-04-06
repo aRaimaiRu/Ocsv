@@ -14,7 +14,6 @@ export default function BoxColumn2({
     setselection1,
     setselection2,
     setselection3,
-    paper,
   },
 }) {
   const [modalInput, setModalInput] = useState({

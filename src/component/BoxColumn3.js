@@ -7,17 +7,11 @@ import ModalBody from "./ModalBody";
 import { map } from "jquery";
 export default function BoxColumn3({
   box3props: {
-    main,
-    setMain,
-    sub,
-    setSub,
     content,
     setContent,
     selection1,
     selection2,
     selection3,
-    setselection1,
-    setselection2,
     setselection3,
   },
 }) {
@@ -54,7 +48,6 @@ export default function BoxColumn3({
     setOpen(false);
   };
   const handleModalInput = (value) => {
-    //console.log(modalInput);
     setModalInput({ ...modalInput, contentType: value.target.value });
     console.log("BoxColumn3", value.target.value);
   };

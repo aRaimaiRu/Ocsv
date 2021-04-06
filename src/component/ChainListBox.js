@@ -37,22 +37,17 @@ export default function ChainListBox({
     setSub,
     selection1,
     selection2,
+    setselection1,
     setselection2,
     setselection3,
   };
 
   const listBox3Props = {
-    main,
-    setMain,
-    sub,
-    setSub,
     content,
     setContent,
     selection1,
     selection2,
     selection3,
-    setselection1,
-    setselection2,
     setselection3,
   };
 
@@ -63,25 +58,6 @@ export default function ChainListBox({
       <BoxColumn2 box2props={listBox2Props} />
 
       <BoxColumn3 box3props={listBox3Props} />
-
-      {/* <div class="col-md-4  vertical-divider">
-        <div class="mylistbox">
-          {content
-            .filter((c) => c.sub == selection2)
-            .map((c) => (
-              <div
-                className={selection3 == c.id ? "active" : ""}
-                onClick={() => {
-                  setselection3(c.id);
-                }}
-              >
-                {c.contentType}
-              </div>
-            ))}
-        </div>
-        <button>+</button>
-        <button>-</button>
-      </div> */}
     </div>
   );
 }

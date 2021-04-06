@@ -13,7 +13,6 @@ export default function BoxColumn1({
     setselection1,
     setselection2,
     setselection3,
-    paper,
   },
 }) {
   const [modalInput, setModalInput] = useState({ id: randomInt(), title: "" });
