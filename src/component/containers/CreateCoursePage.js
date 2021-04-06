@@ -4,7 +4,8 @@ import "./CreateCoursePage.css";
 import ContentSection from "../ContentSection";
 import ChainListBox from "../ChainListBox";
 import { randomInt } from "../../utils";
-
+import ModalBody from "../ModalBody";
+import Modal from "@material-ui/core/Modal";
 export default function CreateCoursePage() {
   const [grade, setGrade] = useState("");
   const [module, setModule] = useState("");
@@ -33,6 +34,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
+      Picture:[],
     },
     {
       id: 1,
@@ -43,6 +45,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
+      Picture:[],
     },
     {
       id: 2,
@@ -53,6 +56,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
+      Picture:[],
     },
     {
       id: 3,
@@ -63,6 +67,7 @@ export default function CreateCoursePage() {
       outLink: "",
       Answer: [],
       Choice: [],
+      Picture:[],
     },
   ]);
 
@@ -85,6 +90,14 @@ export default function CreateCoursePage() {
     selection3,
     setselection3,
   };
+
+  const [open, setOpen] = useState(false);
+  const handleClose = ()=>{
+    setOpen(false)
+  }
+  const handleOpen = ()=>{
+    setOpen(true)
+  }
 
   return (
     <>
@@ -133,9 +146,15 @@ export default function CreateCoursePage() {
           <Button variant="contained" color="primary" href="/QuestionPage">
             รูปที่เคย Upload
           </Button>
-          <Button variant="contained" color="primary" href="/CreateCoursePage">
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={() => console.log("click button")}
+          >
             upload รูป
           </Button>
+
+          
         </div>
       )}
     </>
