@@ -1,5 +1,6 @@
 import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
+import EditorComponent from "./EditorComponent";
 export default function ContentSection(props) {
   const { content, setContent } = props.content;
   ///filter content id and shallowCopy
@@ -47,28 +48,28 @@ export default function ContentSection(props) {
             handleTextChange={handleTextChange}
           />
         ))}
-        {(mycontent.contentType != "Content" &&
-          mycontent.contentType != "หัวข้อคำถาม") && (
-          <div
-            onClick={() => {
-              console.log(mycontent);
-              if (
-                mycontent.contentType === "Choiceแบบเลือกตอบ" &&
-                mycontent.Answer.length >= 1
-              ) {
-                mycontent.Choice.push("");
-                handleTextChange(mycontent);
-              } else {
-                mycontent.Choice.push("");
-                mycontent.Answer.push(-1);
-                handleTextChange(mycontent);
-              }
-            }}
-            style={{ display: "inline", margin: "auto" }}
-          >
-            Create
-          </div>
-        )}
+        {mycontent.contentType != "Content" &&
+          mycontent.contentType != "หัวข้อคำถาม" && (
+            <div
+              onClick={() => {
+                console.log(mycontent);
+                if (
+                  mycontent.contentType === "Choiceแบบเลือกตอบ" &&
+                  mycontent.Answer.length >= 1
+                ) {
+                  mycontent.Choice.push("");
+                  handleTextChange(mycontent);
+                } else {
+                  mycontent.Choice.push("");
+                  mycontent.Answer.push(-1);
+                  handleTextChange(mycontent);
+                }
+              }}
+              style={{ display: "inline", margin: "auto" }}
+            >
+              Create
+            </div>
+          )}
         <row className="mgt">
           <label style={{ float: "left", marginBottom: "0" }}>
             อธิบายเฉลยเพิ่มเติม
@@ -101,6 +102,7 @@ export default function ContentSection(props) {
             }
           />
         </row>
+        <EditorComponent />
       </div>
     </div>
   );

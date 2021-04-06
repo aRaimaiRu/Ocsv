@@ -5,6 +5,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import { randomInt } from "../utils";
 import ModalBody from "./ModalBody";
 import { map } from "jquery";
+import { Editor, EditorState } from "draft-js";
+import "draft-js/dist/Draft.css";
+
 export default function BoxColumn3({
   box3props: {
     content,
