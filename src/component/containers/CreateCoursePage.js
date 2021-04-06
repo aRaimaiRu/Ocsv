@@ -155,7 +155,7 @@ export default function CreateCoursePage() {
 
       {selection3 != -1 && (
         <div className="spaceevenly mgt">
-          <Button variant="contained" color="primary" href="/QuestionPage">
+          <Button variant="contained" color="primary" href="/ShowImagePage">
             รูปที่เคย Upload
           </Button>
           <Button
