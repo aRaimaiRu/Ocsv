@@ -252,6 +252,7 @@ class EditorComponent extends React.Component {
     this.state = {
       mode: "rawContent",
       editorState: EditorState.createEmpty(),
+      //editorState: EditorState.createWithContent(this.props.mycontent.content),
       codeMirrorValue: BASE_CONTENT["rawContent"],
       showAllState: false,
     };
@@ -262,14 +263,11 @@ class EditorComponent extends React.Component {
   }
 
   onChange = (editorState) => {
-    console.log(this.props.handleTextChange);
-
     this.props.handleTextChange({
       ...this.props.mycontent,
       content: convertToHTML(editorState.getCurrentContent()),
     });
 
-    console.log(convertToHTML(editorState.getCurrentContent()));
     this.setState({ editorState });
   };
 
