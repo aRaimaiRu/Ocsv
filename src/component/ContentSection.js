@@ -102,7 +102,10 @@ export default function ContentSection(props) {
             }
           />
         </row>
-        <EditorComponent />
+        <EditorComponent
+          handleTextChange={handleTextChange}
+          mycontent={mycontent}
+        />
       </div>
     </div>
   );

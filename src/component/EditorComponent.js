@@ -262,6 +262,14 @@ class EditorComponent extends React.Component {
   }
 
   onChange = (editorState) => {
+    console.log(this.props.handleTextChange);
+
+    this.props.handleTextChange({
+      ...this.props.mycontent,
+      content: convertToHTML(editorState.getCurrentContent()),
+    });
+
+    console.log(convertToHTML(editorState.getCurrentContent()));
     this.setState({ editorState });
   };
 
