@@ -27,7 +27,7 @@ export default function CreateCoursePage() {
   const [content, setContent] = useState([
     {
       id: 0,
-      content: "abcd",
+      content: "",
       sub: 0,
       contentType: "Content",
       Explain: "",
@@ -38,7 +38,7 @@ export default function CreateCoursePage() {
     },
     {
       id: 1,
-      content: "efgh",
+      content: "",
       sub: 0,
       contentType: "หัวข้อคำถาม",
       Explain: "",
@@ -49,7 +49,7 @@ export default function CreateCoursePage() {
     },
     {
       id: 2,
-      content: "efgh",
+      content: "",
       sub: 1,
       contentType: "Choiceแบบเลือกตอบ",
       Explain: "",
@@ -60,7 +60,7 @@ export default function CreateCoursePage() {
     },
     {
       id: 3,
-      content: "efgh",
+      content: "",
       sub: 1,
       contentType: "Choiceตัวเลือกแบบมีลำดับ",
       Explain: "",
