@@ -6,6 +6,7 @@ import { convertToRaw, convertFromRaw } from "draft-js";
 import { convertToHTML, convertFromHTML } from "draft-convert";
 const c = `<h1>test</h1>`;
 const EditorComponent2 = (props) => {
+  console.log(props.mycontent);
   const [editorState, setEditorState] = useState(() =>
     //EditorState.createEmpty()
     EditorState.createWithContent(convertFromHTML(props.mycontent.content))

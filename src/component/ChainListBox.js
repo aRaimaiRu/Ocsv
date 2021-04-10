@@ -30,7 +30,6 @@ export default function ChainListBox({
     selection3,
     setselection3,
   };
-  console.log(main);
 
   const listBox2Props = {
     sub,
