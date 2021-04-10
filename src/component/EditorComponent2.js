@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { EditorState } from "draft-js";
 import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
@@ -6,14 +6,23 @@ import { convertToRaw, convertFromRaw } from "draft-js";
 import { convertToHTML, convertFromHTML } from "draft-convert";
 const c = `<h1>test</h1>`;
 const EditorComponent2 = (props) => {
-  console.log(props.mycontent);
+  console.log(props.mycontent.content);
+
   const [editorState, setEditorState] = useState(() =>
-    //EditorState.createEmpty()
+    // EditorState.createEmpty()
+
     EditorState.createWithContent(convertFromHTML(props.mycontent.content))
   );
-  // const importHTML = () => {
-  //   setEditorState(EditorState.push(editorState, convertFromHTML(c)));
-  // };
+
+  // useEffect(() => {
+  //   EditorState.createWithContent(convertFromHTML(props.mycontent.content));
+  // });
+  const exportHTML = () => {
+    props.handleTextChange({
+      ...props.mycontent,
+      content: convertToHTML(editorState.getCurrentContent()),
+    });
+  };
 
   const onChange = () => {
     props.handleTextChange({
@@ -26,11 +35,11 @@ const EditorComponent2 = (props) => {
     <div className="App">
       <header className="App-header">Rich Text Editor Example</header>
       <Editor
+        onChange={onChange}
         editorState={editorState}
         onEditorStateChange={setEditorState}
-        onChange={onChange}
       />
-      {/* <button onClick={(c) => importHTML(c)}>test </button> */}
+      {/* <button onClick={(c) => exportHTML(c)}>Save </button> */}
     </div>
   );
 };

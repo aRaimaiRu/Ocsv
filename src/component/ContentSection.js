@@ -102,11 +102,15 @@ export default function ContentSection(props) {
             }
           />
         </row>
-
-        <EditorComponent2
-          mycontent={mycontent}
-          handleTextChange={handleTextChange}
-        />
+        {content.map(
+          (c) =>
+            c.id == props.selection3 && (
+              <EditorComponent2
+                mycontent={mycontent}
+                handleTextChange={handleTextChange}
+              />
+            )
+        )}
       </div>
     </div>
   );
