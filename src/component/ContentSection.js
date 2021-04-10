@@ -1,6 +1,7 @@
 import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
 import EditorComponent from "./EditorComponent";
+import EditorComponent2 from "./EditorComponent2";
 export default function ContentSection(props) {
   const { content, setContent } = props.content;
   ///filter content id and shallowCopy
@@ -103,15 +104,7 @@ export default function ContentSection(props) {
           />
         </row>
 
-        {content.map(
-          (c, i) =>
-            c.id == props.selection3 && (
-              <EditorComponent
-                handleTextChange={handleTextChange}
-                mycontent={mycontent}
-              />
-            )
-        )}
+        <EditorComponent2 />
       </div>
     </div>
   );
