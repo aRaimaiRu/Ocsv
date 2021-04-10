@@ -52,11 +52,9 @@ export default function BoxColumn3({
   };
   const handleModalInput = (value) => {
     setModalInput({ ...modalInput, contentType: value.target.value });
-    console.log("BoxColumn3", value.target.value);
   };
 
   const createNewsub = (modalInput) => {
-    console.log("modalInpit =", modalInput);
     const index = content.findIndex((obj) => modalInput.id == obj.id);
     setContent((prev) =>
       index == -1
@@ -88,7 +86,6 @@ export default function BoxColumn3({
   return (
     <div class="col-md-4  vertical-divider">
       <div class="mylistbox">
-        {console.log("renderBox3", content)}
         {content
           .filter((j) => j.sub == selection2)
           .map((c, id) => (

@@ -10,14 +10,11 @@ const EditorComponent2 = (props) => {
     //EditorState.createEmpty()
     EditorState.createWithContent(convertFromHTML(props.mycontent.content))
   );
-  const importHTML = () => {
-    //console.log(convertFromHTML(c));
-    setEditorState(EditorState.push(editorState, convertFromHTML(c)));
-  };
+  // const importHTML = () => {
+  //   setEditorState(EditorState.push(editorState, convertFromHTML(c)));
+  // };
 
   const onChange = () => {
-    console.log(convertToHTML(editorState.getCurrentContent()));
-
     props.handleTextChange({
       ...props.mycontent,
       content: convertToHTML(editorState.getCurrentContent()),
@@ -32,7 +29,7 @@ const EditorComponent2 = (props) => {
         onEditorStateChange={setEditorState}
         onChange={onChange}
       />
-      <button onClick={(c) => importHTML(c)}>test </button>
+      {/* <button onClick={(c) => importHTML(c)}>test </button> */}
     </div>
   );
 };

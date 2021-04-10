@@ -27,7 +27,6 @@ export default function BoxColumn1({
     setOpen(false);
   };
   const handleModalInput = (value) => {
-    console.log(modalInput);
     setModalInput({ ...modalInput, title: value.target.value });
   };
 

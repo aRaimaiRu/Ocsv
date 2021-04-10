@@ -53,7 +53,6 @@ export default function ContentSection(props) {
           mycontent.contentType != "หัวข้อคำถาม" && (
             <div
               onClick={() => {
-                console.log(mycontent);
                 if (
                   mycontent.contentType === "Choiceแบบเลือกตอบ" &&
                   mycontent.Answer.length >= 1

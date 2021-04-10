@@ -178,7 +178,6 @@ export default function CreateCoursePage() {
             variant="contained"
             color="primary"
             onClick={() => {
-              console.log("click showPicture", showPicture);
               handleShowPicture();
               handleOpen();
             }}

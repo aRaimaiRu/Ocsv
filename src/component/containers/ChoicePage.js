@@ -8,7 +8,6 @@ import { inArray } from "jquery";
 export default function ChoicePage(props) {
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {console.log(props.mycontent, "ChoicePage")}
       <div style={{ margin: "auto" }}>
         {props.mycontent.contentType == "Choiceตัวเลือกแบบมีลำดับ" ? (
           <select
