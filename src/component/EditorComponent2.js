@@ -33,7 +33,7 @@ const EditorComponent2 = (props) => {
 
   return (
     <div className="App">
-      <header className="App-header">Rich Text Editor Example</header>
+      <header className="App-header">HTML Editor</header>
       <Editor
         onChange={onChange}
         editorState={editorState}

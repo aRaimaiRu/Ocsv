@@ -33,13 +33,15 @@ export default function ContentSection(props) {
           flexDirection: "column",
         }}
       >
-        <textarea
-          style={{ width: "100%" }}
-          value={mycontent.content}
-          onChange={(e) =>
-            handleTextChange({ ...mycontent, content: e.target.value })
-          }
-        ></textarea>
+        {content.map(
+          (c) =>
+            c.id == props.selection3 && (
+              <EditorComponent2
+                mycontent={mycontent}
+                handleTextChange={handleTextChange}
+              />
+            )
+        )}
 
         {mycontent.Choice.map((c, index) => (
           <ChoicePage
@@ -102,15 +104,6 @@ export default function ContentSection(props) {
             }
           />
         </row>
-        {content.map(
-          (c) =>
-            c.id == props.selection3 && (
-              <EditorComponent2
-                mycontent={mycontent}
-                handleTextChange={handleTextChange}
-              />
-            )
-        )}
       </div>
     </div>
   );
