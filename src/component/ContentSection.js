@@ -2,6 +2,7 @@ import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
 import EditorComponent from "./EditorComponent";
 import EditorComponent2 from "./EditorComponent2";
+import Button from "@material-ui/core/Button";
 export default function ContentSection(props) {
   const { content, setContent } = props.content;
   ///filter content id and shallowCopy
@@ -53,7 +54,7 @@ export default function ContentSection(props) {
         ))}
         {mycontent.contentType != "Content" &&
           mycontent.contentType != "หัวข้อคำถาม" && (
-            <div
+            <Button
               onClick={() => {
                 if (
                   mycontent.contentType === "Choiceแบบเลือกตอบ" &&
@@ -69,8 +70,8 @@ export default function ContentSection(props) {
               }}
               style={{ display: "inline", margin: "auto" }}
             >
-              Create
-            </div>
+              +
+            </Button>
           )}
         <row className="mgt">
           <label style={{ float: "left", marginBottom: "0" }}>

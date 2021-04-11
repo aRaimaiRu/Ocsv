@@ -5,6 +5,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import { randomInt } from "../utils";
 import ModalBody from "./ModalBody";
 import { map } from "jquery";
+import Button from "@material-ui/core/Button";
 export default function BoxColumn2({
   box2props: {
     sub,
@@ -83,19 +84,19 @@ export default function BoxColumn2({
               >
                 {c.title}
               </div>
-              <button
+              <Button
                 onClick={() => {
                   handleOpen();
                   setModalInput(c);
                 }}
               >
                 Edit
-              </button>
+              </Button>
             </div>
           ))}
 
-        <button onClick={handleOpen}>+</button>
-        <button onClick={() => deletesub(selection2)}>-</button>
+        <Button onClick={handleOpen}>+</Button>
+        <Button onClick={() => deletesub(selection2)}>-</Button>
         <Modal
           open={open}
           onClose={handleClose}

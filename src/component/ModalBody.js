@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import Button from "@material-ui/core/Button";
 import { makeStyles } from "@material-ui/core/styles";
 
 const useStyles = makeStyles((theme) => ({
@@ -22,7 +22,7 @@ export default function ModalBody(props) {
     <div id="modalDiv" className={classes.MyModalBox}>
       <h2 id="simple-modal-title">{props.title}</h2>
       {props.children}
-      <button onClick={props.onClickFunction}>Save</button>
+      <Button onClick={props.onClickFunction}>Save</Button>
     </div>
   );
 }

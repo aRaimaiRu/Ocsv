@@ -8,32 +8,55 @@ import LoginPage from "./component/containers/LoginPage";
 import RegisterPage from "./component/containers/RegisterPage";
 import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import Button from "@material-ui/core/Button";
+
 function App() {
+  const theme = createMuiTheme({
+    overrides: {
+      // Style sheet name ⚛️
+      MuiButton: {
+        // Name of the rule
+        text: {
+          // Some CSS
+          background: "#fa5607",
+          borderRadius: 3,
+          border: 0,
+          color: "white",
+          height: 48,
+          padding: "0 10px",
+          boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
+        },
+      },
+    },
+  });
   return (
     <Router>
-      <Container className="container">
-        {/* <div className="header"></div> */}
-        <Switch>
-          <Route exact path="/">
-            <CoursePage />
-          </Route>
-          <Route path="/CreateCoursePage">
-            <CreateCoursePage />
-          </Route>
-          <Route path="/QuestionPage">
-            <QuestionPage />
-          </Route>
-          <Route path="/ChoicePage">
-            <ChoicePage />
-          </Route>
-          <Route exact path="/Login">
-            <LoginPage />
-          </Route>
-          <Route exact path="/Register">
-            <RegisterPage />
-          </Route>
-        </Switch>
-      </Container>
+      <ThemeProvider theme={theme}>
+        <Container className="container">
+          {/* <div className="header"></div> */}
+          <Switch>
+            <Route exact path="/">
+              <CoursePage />
+            </Route>
+            <Route path="/CreateCoursePage">
+              <CreateCoursePage />
+            </Route>
+            <Route path="/QuestionPage">
+              <QuestionPage />
+            </Route>
+            <Route path="/ChoicePage">
+              <ChoicePage />
+            </Route>
+            <Route exact path="/Login">
+              <LoginPage />
+            </Route>
+            <Route exact path="/Register">
+              <RegisterPage />
+            </Route>
+          </Switch>
+        </Container>
+      </ThemeProvider>
     </Router>
   );
 }

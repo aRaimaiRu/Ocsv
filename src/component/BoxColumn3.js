@@ -7,7 +7,7 @@ import ModalBody from "./ModalBody";
 import { map } from "jquery";
 import { Editor, EditorState } from "draft-js";
 import "draft-js/dist/Draft.css";
-
+import Button from "@material-ui/core/Button";
 export default function BoxColumn3({
   box3props: {
     content,
@@ -27,12 +27,13 @@ export default function BoxColumn3({
     outLink: "",
     Answer: [],
     Choice: [],
+    Picture: [],
   });
 
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
-    if (selection1 != -1) {
+    if (selection1 != -1 && selection2 != -1) {
       setOpen(true);
     }
   };
@@ -47,6 +48,7 @@ export default function BoxColumn3({
       outLink: "",
       Answer: [],
       Choice: [],
+      Picture: [],
     });
     setOpen(false);
   };
@@ -79,6 +81,7 @@ export default function BoxColumn3({
         outLink: "",
         Answer: [],
         Choice: [],
+        Picture: [],
       }),
     [selection2]
   );
@@ -102,19 +105,19 @@ export default function BoxColumn3({
               >
                 {c.contentType}
               </div>
-              <button
+              <Button
                 onClick={() => {
                   setModalInput(c);
                   handleOpen();
                 }}
               >
                 Edit
-              </button>
+              </Button>
             </div>
           ))}
 
-        <button onClick={handleOpen}>+</button>
-        <button onClick={() => deletesub(selection3)}>-</button>
+        <Button onClick={handleOpen}>+</Button>
+        <Button onClick={() => deletesub(selection3)}>-</Button>
         <Modal
           open={open}
           onClose={handleClose}

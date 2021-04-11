@@ -156,12 +156,8 @@ export default function CreateCoursePage() {
       </div>
 
       <div className="spaceevenly mgt">
-        <Button variant="contained" color="primary" href="/CreateCoursePage">
-          Save
-        </Button>
-        <Button variant="contained" color="primary" href="/CreateCoursePage">
-          Download CSV
-        </Button>
+        <Button>Save</Button>
+        <Button>Download CSV</Button>
       </div>
 
       <ChainListBox allProps={allProps} />
@@ -175,8 +171,6 @@ export default function CreateCoursePage() {
       {selection3 != -1 && (
         <div className="spaceevenly mgt">
           <Button
-            variant="contained"
-            color="primary"
             onClick={() => {
               handleShowPicture();
               handleOpen();
@@ -185,8 +179,6 @@ export default function CreateCoursePage() {
             รูปที่เคย Upload
           </Button>
           <Button
-            variant="contained"
-            color="primary"
             onClick={() => {
               handleNotShowPicture();
               handleOpen();

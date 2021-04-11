@@ -4,6 +4,7 @@ import { Editor } from "react-draft-wysiwyg";
 import "react-draft-wysiwyg/dist/react-draft-wysiwyg.css";
 import { convertToRaw, convertFromRaw } from "draft-js";
 import { convertToHTML, convertFromHTML } from "draft-convert";
+import "./EditorComponent2.css";
 const c = `<h1>test</h1>`;
 const EditorComponent2 = (props) => {
   console.log(props.mycontent.content);
