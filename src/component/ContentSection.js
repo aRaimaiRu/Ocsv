@@ -18,7 +18,7 @@ export default function ContentSection(props) {
   return (
     <div
       className="container"
-      style={{ borderStyle: "solid", borderColor: "#FF0000", margin: "1em 0" }}
+      style={{ borderStyle: "solid", borderColor: "#FF0000", marginTop: "1em" }}
     >
       <div
         style={{
