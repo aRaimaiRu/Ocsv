@@ -87,7 +87,7 @@ export default function BoxColumn3({
   );
 
   return (
-    <div class="col-md-4  vertical-divider">
+    <div class="col-md-4  ">
       <div class="mylistbox">
         {content
           .filter((j) => j.sub == selection2)
