@@ -1,6 +1,5 @@
 import React, { Component, useState, useEffect } from "react";
 import ChoicePage from "./containers/ChoicePage";
-import EditorComponent from "./EditorComponent";
 import EditorComponent2 from "./EditorComponent2";
 import Button from "@material-ui/core/Button";
 export default function ContentSection(props) {
