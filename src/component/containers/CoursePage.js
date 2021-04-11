@@ -14,9 +14,7 @@ export default class CoursePage extends Component {
   render() {
     return (
       <>
-        <Button variant="contained" color="primary" href="/CreateCoursePage">
-          Create Course
-        </Button>
+        <Button href="/CreateCoursePage">Create Course</Button>
         <CourseCard courses={this.state}></CourseCard>
       </>
     );
