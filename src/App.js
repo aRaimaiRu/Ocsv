@@ -27,7 +27,9 @@ function App() {
           padding: "0 10px",
           boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
         },
-      },
+      root: {
+        borderRadius: 8,
+      },},
     },
   });
   return (
