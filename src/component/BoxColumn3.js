@@ -125,7 +125,7 @@ export default function BoxColumn3({
           aria-describedby="simple-modal-description"
         >
           <ModalBody
-            title="sub Topic"
+            title="Content"
             inputValue={modalInput.title}
             handleChange={handleModalInput}
             onClickFunction={() => createNewsub(modalInput)}
