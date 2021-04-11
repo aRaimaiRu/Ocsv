@@ -18,7 +18,7 @@ export default function ChoicePage(props) {
             }}
           >
             {createListRange(props.listLength)
-              .filter((c) => !props.mycontent.Answer.includes(c)) //wait to fix this big
+              .filter((c) => !props.mycontent.Answer.includes(c))
               .map((c) => (
                 <option value={c}>
                   {c}
@@ -36,6 +36,7 @@ export default function ChoicePage(props) {
               props.mycontent.Answer[0] = props.index;
               props.handleTextChange(props.mycontent);
             }}
+            style={{ marginRight: "1em" }}
           />
         ) : (
           ""
@@ -48,27 +49,18 @@ export default function ChoicePage(props) {
           }}
           value={props.mycontent.Choice[props.index]}
         ></input>
-        <button
-          variant="contained"
-          color="primary"
-          href="/CreateCoursePage"
-          style={{ marginLeft: "1em" }}
-        >
-          +
-        </button>
-        <button
-          variant="contained"
-          color="primary"
-          href="/CreateCoursePage"
-          style={{ marginLeft: "1em" }}
-          onClick={() => {
+
+        <Button
+          style={{ marginLeft: "1em", borderRadius: "10em" }}
+          onClick={(e) => {
+            e.preventDefault();
             props.mycontent.Choice.splice(props.index, 1);
             props.mycontent.Answer.splice(props.index, 1);
             props.handleTextChange(props.mycontent);
           }}
         >
           -
-        </button>
+        </Button>
       </div>
     </div>
   );

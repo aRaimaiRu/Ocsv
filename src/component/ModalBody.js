@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
     left: "49%",
     transform: "translate(-52%, -49%)",
     position: "absolute",
-    width: 1000,
+
     backgroundColor: theme.palette.background.paper,
     border: "2px solid #000",
     boxShadow: theme.shadows[5],
@@ -22,7 +22,11 @@ export default function ModalBody(props) {
     <div id="modalDiv" className={classes.MyModalBox}>
       <h2 id="simple-modal-title">{props.title}</h2>
       {props.children}
-      <Button onClick={props.onClickFunction}>Save</Button>
+      {typeof props.onClickFunction != "undefined" ? (
+        <Button onClick={props.onClickFunction}>Save</Button>
+      ) : (
+        ""
+      )}
     </div>
   );
 }

@@ -31,7 +31,7 @@ form {
   display: inline-block;
 }
 .tiles {
-  height: 1000px;
+  height: 900px;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;

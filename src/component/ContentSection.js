@@ -70,7 +70,11 @@ export default function ContentSection(props) {
                   handleTextChange(mycontent);
                 }
               }}
-              style={{ display: "inline", margin: "auto" }}
+              style={{
+                display: "inline",
+                margin: "auto",
+                borderRadius: "10em",
+              }}
             >
               +
             </Button>

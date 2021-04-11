@@ -206,23 +206,17 @@ export default function CreateCoursePage() {
                 ></input>
               </ModalBody>
             ) : (
-              <ModalBody
-                title="รูปที่เคย Upload"
-                onClickFunction={() => {
-                  addNewPicture(bufferPicture);
-                  handleClose();
-                }}
-              >
+              <ModalBody title="รูปที่เคย Upload">
                 <div className="tiles">
                   {content
                     .find((f) => f.id === selection3)
                     .Picture.map((c) => (
-                      <div>
+                      <div style={{ marginTop: "1em" }}>
                         <button
                           style={{
                             position: "absolute",
                             zIndex: "1",
-                            right: "60px",
+                            right: "0px",
                           }}
                           onClick={() => {
                             handleDeletePicture(c);
