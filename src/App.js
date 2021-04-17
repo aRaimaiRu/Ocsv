@@ -10,8 +10,12 @@ import "./App.css";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-
+import useToken from "./component/useToken/useToken";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
+import Typography from "@material-ui/core/Typography";
 function App() {
+  const { token, setToken } = useToken();
   const theme = createMuiTheme({
     overrides: {
       // Style sheet name ⚛️
@@ -27,11 +31,38 @@ function App() {
           padding: "0 10px",
           boxShadow: "0 3px 5px 2px rgba(255, 105, 135, .3)",
         },
-      root: {
-        borderRadius: 8,
-      },},
+        root: {
+          borderRadius: 8,
+        },
+      },
     },
   });
+  if (!token) {
+    return (
+      <Router>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
+            <Button color="inherit" href="/Login">
+              Login
+            </Button>
+            <Button color="inherit" href="/Register">
+              Register
+            </Button>
+          </Toolbar>
+        </AppBar>
+        <Switch>
+          <Route exact path="/Login">
+            <LoginPage setToken={setToken} />
+          </Route>
+          <Route exact path="/Register">
+            <RegisterPage setToken={setToken} />
+          </Route>
+        </Switch>
+      </Router>
+    );
+  }
+
   return (
     <Router>
       <ThemeProvider theme={theme}>
@@ -49,12 +80,6 @@ function App() {
             </Route>
             <Route path="/ChoicePage">
               <ChoicePage />
-            </Route>
-            <Route exact path="/Login">
-              <LoginPage />
-            </Route>
-            <Route exact path="/Register">
-              <RegisterPage />
             </Route>
           </Switch>
         </Container>

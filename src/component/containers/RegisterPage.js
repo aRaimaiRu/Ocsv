@@ -2,8 +2,16 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 // import "./RegisterPage.css";
-
-export default function RegisterPage() {
+async function registerUser(credentials) {
+  return fetch("http://localhost:3001/api/v1/users/register", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+export default function RegisterPage({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,8 +19,14 @@ export default function RegisterPage() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    const token = await registerUser({
+      email,
+      password,
+    });
+    setToken(token);
+    console.log("register", token);
   }
 
   return (

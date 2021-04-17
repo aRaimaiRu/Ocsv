@@ -3,7 +3,17 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./LoginPage.css";
 
-export default function LoginPage() {
+async function loginUser(credentials) {
+  return fetch("http://localhost:8080/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(credentials),
+  }).then((data) => data.json());
+}
+
+export default function LoginPage({ setToken }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -11,8 +21,14 @@ export default function LoginPage() {
     return email.length > 0 && password.length > 0;
   }
 
-  function handleSubmit(event) {
+  async function handleSubmit(event) {
     event.preventDefault();
+    const token = await loginUser({
+      email,
+      password,
+    });
+    setToken(token);
+    console.log(token);
   }
 
   return (
