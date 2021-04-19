@@ -70,7 +70,7 @@ function App() {
           {/* <div className="header"></div> */}
           <Switch>
             <Route exact path="/">
-              <CoursePage />
+              <CoursePage token={token} />
             </Route>
             <Route path="/CreateCoursePage">
               <CreateCoursePage />
