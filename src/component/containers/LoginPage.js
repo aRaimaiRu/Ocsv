@@ -2,12 +2,23 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./LoginPage.css";
-
+// console.log(JSON.stringify(credentials));
+//   fetch("http://localhost:3001/api/v1/auth", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//       Accept: "application/json",
+//     },
+//     body: JSON.stringify(credentials),
+//   }).then((messages) => {
+//     console.log(messages.json());
+//   });
 async function loginUser(credentials) {
-  return fetch("http://localhost:8080/login", {
+  return fetch("http://localhost:3001/api/v1/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
+      Accept: "application/json",
     },
     body: JSON.stringify(credentials),
   }).then((data) => data.json());
