@@ -43,7 +43,7 @@ function App() {
         <AppBar position="static">
           <Toolbar>
             <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
-            <Button color="inherit" href="/Login">
+            <Button color="inherit" href="/">
               Login
             </Button>
             <Button color="inherit" href="/Register">
@@ -52,11 +52,11 @@ function App() {
           </Toolbar>
         </AppBar>
         <Switch>
-          <Route exact path="/Login">
-            <LoginPage setToken={setToken} />
-          </Route>
           <Route exact path="/Register">
             <RegisterPage setToken={setToken} />
+          </Route>
+          <Route path="/">
+            <LoginPage setToken={setToken} />
           </Route>
         </Switch>
       </Router>

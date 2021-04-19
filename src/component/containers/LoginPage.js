@@ -62,7 +62,13 @@ export default function LoginPage({ setToken }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
+        <Button
+          block
+          size="lg"
+          type="submit"
+          disabled={!validateForm()}
+          href="/"
+        >
           Login
         </Button>
       </Form>
