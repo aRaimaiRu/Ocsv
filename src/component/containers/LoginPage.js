@@ -67,7 +67,7 @@ export default function LoginPage({ setToken }) {
           size="lg"
           type="submit"
           disabled={!validateForm()}
-          href="/"
+          
         >
           Login
         </Button>
