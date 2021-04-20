@@ -1,7 +1,6 @@
 import React from "react";
 import MyCard from "./outlinedCard";
 export default function CourseCard({ courses, token }) {
-  console.log(test);
   return (
     <div className="Courses">
       {Object.values(courses).map((obj) => (
