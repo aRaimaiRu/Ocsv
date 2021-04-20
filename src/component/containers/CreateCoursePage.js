@@ -6,70 +6,21 @@ import ChainListBox from "../ChainListBox";
 import { randomInt } from "../../utils";
 import ModalBody from "../ModalBody";
 import Modal from "@material-ui/core/Modal";
+import { useLocation } from "react-router-dom";
 export default function CreateCoursePage() {
-  const [grade, setGrade] = useState("");
-  const [module, setModule] = useState("");
-  const [main, setMain] = useState([
-    { id: 0, title: "main1" },
-    { id: 1, title: "main2" },
-  ]);
+  const location = useLocation();
+  console.log("location = ", location);
+  const [grade, setGrade] = useState(location.state.grade);
+  const [module, setModule] = useState(location.state.module);
+  const [main, setMain] = useState(location.state.mainTopic);
 
   const createMain = () => {
     setMain([...main, { id: randomInt(), title: "..." }]);
   };
 
-  const [sub, setSub] = useState([
-    { main: 0, title: "sub1", id: 0 },
-    { main: 0, title: "sub2", id: 1 },
-    { main: 1, title: "sub3", id: 2 },
-  ]);
+  const [sub, setSub] = useState(location.state.subTopic);
 
-  const [content, setContent] = useState([
-    {
-      id: 0,
-      content: "",
-      sub: 0,
-      contentType: "Content",
-      Explain: "",
-      outLink: "",
-      Answer: [],
-      Choice: [],
-      Picture: [],
-    },
-    {
-      id: 1,
-      content: "",
-      sub: 0,
-      contentType: "หัวข้อคำถาม",
-      Explain: "",
-      outLink: "",
-      Answer: [],
-      Choice: [],
-      Picture: [],
-    },
-    {
-      id: 2,
-      content: "",
-      sub: 1,
-      contentType: "Choiceแบบเลือกตอบ",
-      Explain: "",
-      outLink: "",
-      Answer: [],
-      Choice: [],
-      Picture: [],
-    },
-    {
-      id: 3,
-      content: "",
-      sub: 1,
-      contentType: "Choiceตัวเลือกแบบมีลำดับ",
-      Explain: "",
-      outLink: "",
-      Answer: [],
-      Choice: [],
-      Picture: [],
-    },
-  ]);
+  const [content, setContent] = useState(location.state.content);
 
   const [selection1, setselection1] = useState(-1);
   const [selection2, setselection2] = useState(-1);
@@ -130,12 +81,55 @@ export default function CreateCoursePage() {
     );
   };
 
+  const handleSave = async () => {
+    console.log(location.state.AuthorID);
+    if (!location.pathname.includes("edit")) {
+      fetch("http://localhost:3001/api/v1/allcontent/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": location.state.token,
+        },
+        body: JSON.stringify({
+          module,
+          grade,
+          mainTopic: main,
+          subTopic: sub,
+          content,
+        }),
+      })
+        .then((data) => data.json())
+        .then((data) => {
+          console.log("post data =", data);
+        });
+    } else if (location.pathname.includes("edit")) {
+      let editBody = JSON.stringify({
+        _id: location.state._id,
+        module,
+        grade,
+        mainTopic: main,
+        subTopic: sub,
+        content,
+      });
+      console.log(location.state.AuthorID);
+      fetch("http://localhost:3001/api/v1/allcontent/edit", {
+        method: "put",
+        headers: {
+          "Content-Type": "application/json",
+          "x-auth-token": location.state.token,
+          Accept: "application/json",
+        },
+        body: editBody,
+      }).then((data) => data.json());
+    }
+  };
+
   return (
     <>
       <div className="mgt">
         <label style={{ float: "left", marginBottom: "0" }}>ระดับชั้น</label>
         <input
-          class="validate[required] text-input "
+          className="validate[required] text-input "
           type="text"
           name="Grade"
           id="Grade"
@@ -146,7 +140,7 @@ export default function CreateCoursePage() {
       <div className="mgt">
         <label style={{ float: "left", marginBottom: "0" }}>Module</label>
         <input
-          class="validate[required] text-input "
+          className="validate[required] text-input "
           type="text"
           name="Module"
           id="Module"
@@ -156,7 +150,7 @@ export default function CreateCoursePage() {
       </div>
 
       <div className="spaceevenly mgt">
-        <Button>Save</Button>
+        <Button onClick={handleSave}>Save</Button>
         <Button>Download CSV</Button>
       </div>
 
