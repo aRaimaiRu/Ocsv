@@ -15,7 +15,7 @@ import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 function App() {
-  const { token, setToken } = useToken();
+  const { token, setToken, deleteToken } = useToken();
   const theme = createMuiTheme({
     overrides: {
       // Style sheet name ⚛️
@@ -37,50 +37,60 @@ function App() {
       },
     },
   });
-  if (!token) {
-    return (
-      <Router>
-        <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
-            <Button color="inherit" href="/">
-              Login
-            </Button>
-            <Button color="inherit" href="/Register">
-              Register
-            </Button>
-          </Toolbar>
-        </AppBar>
-        <Switch>
-          <Route exact path="/Register">
-            <RegisterPage setToken={setToken} />
-          </Route>
-          <Route path="/">
-            <LoginPage setToken={setToken} />
-          </Route>
-        </Switch>
-      </Router>
-    );
-  }
 
   return (
     <Router>
       <ThemeProvider theme={theme}>
+        <AppBar position="static">
+          <Toolbar>
+            <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
+            {!token && (
+              <>
+                <Button color="inherit" href="/">
+                  Login
+                </Button>
+                <Button color="inherit" href="/Register">
+                  Register
+                </Button>
+              </>
+            )}
+            {token && (
+              <Button color="inherit" href="/" onClick={deleteToken}>
+                Logout
+              </Button>
+            )}
+          </Toolbar>
+        </AppBar>
         <Container className="container">
           {/* <div className="header"></div> */}
+
           <Switch>
-            <Route path="/CreateCoursePage">
-              <CreateCoursePage />
-            </Route>
-            <Route path="/QuestionPage">
-              <QuestionPage />
-            </Route>
-            <Route path="/ChoicePage">
-              <ChoicePage />
-            </Route>
-            <Route path="/">
-              <CoursePage token={token} />
-            </Route>
+            {!token && (
+              <>
+                <Route exact path="/Register">
+                  <RegisterPage setToken={setToken} />
+                </Route>
+                <Route exact path="/">
+                  <LoginPage setToken={setToken} />
+                </Route>
+              </>
+            )}
+            {token && (
+              <>
+                <Route path="/CreateCoursePage">
+                  <CreateCoursePage />
+                </Route>
+                <Route path="/QuestionPage">
+                  <QuestionPage />
+                </Route>
+                <Route path="/ChoicePage">
+                  <ChoicePage />
+                </Route>
+                <Route path="/">
+                  <CoursePage token={token} />
+                </Route>
+              </>
+            )}
           </Switch>
         </Container>
       </ThemeProvider>
