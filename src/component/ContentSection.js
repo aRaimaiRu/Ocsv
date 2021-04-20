@@ -66,7 +66,7 @@ export default function ContentSection(props) {
                   handleTextChange(mycontent);
                 } else {
                   mycontent.Choice.push("");
-                  mycontent.Answer.push(-1);
+                  mycontent.Answer.push(0);
                   handleTextChange(mycontent);
                 }
               }}
