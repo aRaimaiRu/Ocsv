@@ -49,12 +49,13 @@ export default function BoxColumn1({
   };
 
   return (
-    <div class="col-md-4  vertical-divider">
-      <div class="mylistbox">
+    <div className="col-md-4  vertical-divider">
+      <div className="mylistbox">
         {main.map((c, id) => (
           <div
             style={{ display: "flex", justifyContent: "space-between" }}
             className={selection1 == c.id ? "active" : ""}
+            key={id}
           >
             <div
               style={{ width: "100%" }}
