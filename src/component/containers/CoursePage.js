@@ -5,27 +5,8 @@ import { Link } from "react-router-dom";
 export default class CoursePage extends Component {
   constructor(props) {
     super(props);
-    this.state = [
-      { id: 1, grade: "วิทยาการคำนวน ม.1", module: "วิทยาการคอมพิวเตอร์" },
-      { id: 2, grade: "วิทยาการคำนวน ม.2", module: "วิทยาการคอมพิวเตอร์" },
-    ];
+    this.state = [];
     // console.log("CoursePageToken", JSON.parse(props.token)._id);
-
-    const handleDeleteCourse = (_id) => {
-      fetch("http://localhost:3001/api/v1/allcontent/delete", {
-        method: "DELETE",
-        headers: {
-          "Content-Type": "application/json",
-
-          "x-auth-token": JSON.parse(this.props.token)._id,
-        },
-        body: JSON.stringify({
-          _id,
-        }),
-      });
-    };
-
-    const test = "justtest";
   }
 
   async componentDidMount() {
@@ -40,6 +21,7 @@ export default class CoursePage extends Component {
       .then((data) => data.json())
       .then((data) => {
         this.setState(Object.values(data));
+        console.log(data);
         return data;
       });
   }
@@ -78,8 +60,6 @@ export default class CoursePage extends Component {
         <CourseCard
           courses={this.state}
           token={JSON.parse(this.props.token)._id}
-          deletee={this.handleDeleteCourse}
-          test={this.test}
         ></CourseCard>
       </>
     );

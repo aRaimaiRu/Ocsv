@@ -5,7 +5,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import { Link } from "react-router-dom";
-export default function OutlinedCard({ obj, token }) {
+export default function OutlinedCard({ obj, token, handleDelete }) {
   return (
     <Card variant="outlined" style={{ marginTop: 10 }}>
       <CardContent>
@@ -21,7 +21,9 @@ export default function OutlinedCard({ obj, token }) {
         >
           <Button size="small">Edit</Button>
         </Link>
-        <Button size="small">Delete</Button>
+        <Button size="small" onClick={handleDelete}>
+          Delete
+        </Button>
       </CardActions>
     </Card>
   );
