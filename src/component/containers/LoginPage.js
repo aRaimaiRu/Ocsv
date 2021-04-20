@@ -67,7 +67,7 @@ export default function LoginPage({ setToken }) {
           size="lg"
           type="submit"
           disabled={!validateForm()}
-          
+          onClick={() => window.location.reload()}
         >
           Login
         </Button>

@@ -49,8 +49,14 @@ export default function RegisterPage({ setToken }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+        <Button
+          block
+          size="lg"
+          type="submit"
+          disabled={!validateForm()}
+          onClick={() => window.location.reload()}
+        >
+          Regsiter
         </Button>
       </Form>
     </div>

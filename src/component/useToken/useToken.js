@@ -11,8 +11,14 @@ export default function useToken() {
     localStorage.setItem("x-auth-token", JSON.stringify(userToken));
     setToken(userToken.token);
   };
+
+  const deleteToken = () => {
+    localStorage.removeItem("x-auth-token");
+    window.location.reload();
+  };
   return {
     setToken: saveToken,
     token,
+    deleteToken,
   };
 }
