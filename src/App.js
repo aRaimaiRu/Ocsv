@@ -69,9 +69,6 @@ function App() {
         <Container className="container">
           {/* <div className="header"></div> */}
           <Switch>
-            <Route exact path="/">
-              <CoursePage token={token} />
-            </Route>
             <Route path="/CreateCoursePage">
               <CreateCoursePage />
             </Route>
@@ -80,6 +77,9 @@ function App() {
             </Route>
             <Route path="/ChoicePage">
               <ChoicePage />
+            </Route>
+            <Route path="/">
+              <CoursePage token={token} />
             </Route>
           </Switch>
         </Container>
