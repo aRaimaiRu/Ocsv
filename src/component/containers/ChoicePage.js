@@ -17,14 +17,12 @@ export default function ChoicePage(props) {
               props.handleTextChange(props.mycontent);
             }}
           >
-            {createListRange(props.listLength)
-              .filter((c) => !props.mycontent.Answer.includes(c))
-              .map((c) => (
-                <option value={c}>
-                  {c}
-                  {}
-                </option>
-              ))}
+            {createListRange(props.listLength).map((c) => (
+              <option value={c}>
+                {c}
+                {}
+              </option>
+            ))}
           </select>
         ) : props.mycontent.contentType == "Choiceแบบเลือกตอบ" ? (
           <input
