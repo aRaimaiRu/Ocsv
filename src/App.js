@@ -86,7 +86,7 @@ function App() {
                 <Route path="/ChoicePage">
                   <ChoicePage />
                 </Route>
-                <Route path="/">
+                <Route exact path="/">
                   <CoursePage token={token} />
                 </Route>
               </>
