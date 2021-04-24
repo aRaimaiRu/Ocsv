@@ -7,6 +7,8 @@ import { randomInt } from "../../utils";
 import ModalBody from "../ModalBody";
 import Modal from "@material-ui/core/Modal";
 import { useLocation } from "react-router-dom";
+import { CSVLink, CSVDownload } from "react-csv";
+import ChoicePage from "./ChoicePage";
 export default function CreateCoursePage() {
   const location = useLocation();
   console.log("location = ", location);
@@ -123,6 +125,10 @@ export default function CreateCoursePage() {
       }).then((data) => data.json());
     }
   };
+//   const header = {"ระดับชั้น","module","หัวข้อ","หัวข้อย่อย(optional)","ข้อมูลในหน้า","ข้อมูล choice","Index ของเฉลย","ประเภท(content,หัวข้อคำถาม,choiceตัวเลือกแบบมีลำดับ,choiceตัวเลือกแบบไม่มีลำดับ)",
+// "รูปภาพ (ช่องรูปภาพ ขอเป็น ให้ upload รูปเข้าระบบเรา แล้วเป็น url รูปภาพครับ แต่ค่อยทำพรุ้งนี้ได้)","ตัวเลือก","อธิบายเฉลยเพิ่มเติม","ลิ้งค์เว็บไซต์ต่างประเทศ"}
+  const data = { grade,module,main,sub,content};
+  
 
   return (
     <>
@@ -151,7 +157,9 @@ export default function CreateCoursePage() {
 
       <div className="spaceevenly mgt">
         <Button onClick={handleSave}>Save</Button>
-        <Button>Download CSV</Button>
+        {/* <CSVLink data={data} headers={headers}>
+          <Button>Download CSV</Button>
+        </CSVLink> */}
       </div>
 
       <ChainListBox allProps={allProps} />
