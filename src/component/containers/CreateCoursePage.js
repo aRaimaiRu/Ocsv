@@ -68,9 +68,7 @@ export default function CreateCoursePage() {
 
   const addNewPicture = (p) => {
     setContent((prev) =>
-      prev.map((obj) =>
-        obj.id != selection3 ? obj : { ...obj, Picture: [...obj.Picture, p] }
-      )
+      prev.map((obj) => (obj.id != selection3 ? obj : { ...obj, Picture: [p] }))
     );
   };
   const handleDeletePicture = (url) => {
@@ -142,6 +140,7 @@ export default function CreateCoursePage() {
   useEffect(() => {
     var lineBuffer = [];
     var allBuffer = [];
+    allBuffer.push(header);
     for (var i = 0; i < main.length; i++) {
       var currentMain = main[i];
       var currentSubArray = sub.filter((s) => s.main === currentMain.id);
@@ -170,7 +169,7 @@ export default function CreateCoursePage() {
             currentContent.Choice.length === 0 ? "" : currentContent.Choice,
             currentContent.Answer.length === 0 ? "" : currentContent.Answer,
             currentContent.contentType,
-            currentContent.Picture,
+            currentContent.Picture.length > 0 ? currentContent.Picture[0] : "",
             "",
             currentContent.Explain,
             currentContent.outLink
