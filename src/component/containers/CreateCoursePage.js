@@ -125,10 +125,63 @@ export default function CreateCoursePage() {
       }).then((data) => data.json());
     }
   };
-//   const header = {"ระดับชั้น","module","หัวข้อ","หัวข้อย่อย(optional)","ข้อมูลในหน้า","ข้อมูล choice","Index ของเฉลย","ประเภท(content,หัวข้อคำถาม,choiceตัวเลือกแบบมีลำดับ,choiceตัวเลือกแบบไม่มีลำดับ)",
-// "รูปภาพ (ช่องรูปภาพ ขอเป็น ให้ upload รูปเข้าระบบเรา แล้วเป็น url รูปภาพครับ แต่ค่อยทำพรุ้งนี้ได้)","ตัวเลือก","อธิบายเฉลยเพิ่มเติม","ลิ้งค์เว็บไซต์ต่างประเทศ"}
-  const data = { grade,module,main,sub,content};
-  
+  const header = [
+    "ระดับชั้น",
+    "module",
+    "หัวข้อ",
+    "หัวข้อย่อย(optional)",
+    "ข้อมูลในหน้า",
+    "ข้อมูล choice",
+    "Index ของเฉลย",
+    "ประเภท(content,หัวข้อคำถาม,choiceตัวเลือกแบบมีลำดับ,choiceตัวเลือกแบบไม่มีลำดับ)",
+    "รูปภาพ (ช่องรูปภาพ ขอเป็น ให้ upload รูปเข้าระบบเรา แล้วเป็น url รูปภาพครับ แต่ค่อยทำพรุ้งนี้ได้)",
+    "ตัวเลือก",
+    "อธิบายเฉลยเพิ่มเติม",
+    "ลิ้งค์เว็บไซต์ต่างประเทศ",
+  ];
+  useEffect(() => {
+    var lineBuffer = [];
+    var allBuffer = [];
+    for (var i = 0; i < main.length; i++) {
+      var currentMain = main[i];
+      var currentSubArray = sub.filter((s) => s.main === currentMain.id);
+      if (i === 0) {
+        lineBuffer.push(grade, module, currentMain.title);
+      } else {
+        lineBuffer.push("", "", currentMain.title);
+      }
+      for (var j = 0; j < currentSubArray.length; j++) {
+        var currentSub = currentSubArray[j];
+        var currentContentArray = content.filter(
+          (c) => c.sub === currentSub.id
+        );
+        if (j !== 0) {
+          lineBuffer.push("", "", "", currentSub.title);
+        } else if (j === 0) {
+          lineBuffer.push(currentSub.title); //push from main
+        }
+        for (var k = 0; k < currentContentArray.length; k++) {
+          var currentContent = currentContentArray[k];
+          if (k !== 0) {
+            lineBuffer.push("", "", "", "");
+          }
+          lineBuffer.push(
+            currentContent.content,
+            currentContent.Choice.length === 0 ? "" : currentContent.Choice,
+            currentContent.Answer.length === 0 ? "" : currentContent.Answer,
+            currentContent.contentType,
+            currentContent.Picture,
+            "",
+            currentContent.Explain,
+            currentContent.outLink
+          );
+          allBuffer.push(lineBuffer);
+          lineBuffer = [];
+        }
+      }
+    }
+    console.log("allBuffer =", allBuffer);
+  }, [grade, module, main, sub, content]);
 
   return (
     <>
@@ -164,13 +217,16 @@ export default function CreateCoursePage() {
 
       <ChainListBox allProps={allProps} />
       {selection3 != -1 && (
+        //////////////////////////////// ContrntSection ////////////////////////////////////
         <ContentSection
           content={{ content, setContent }}
           selection3={selection3}
         />
+        //////////////////////////////// ContrntSection ////////////////////////////////////
       )}
 
       {selection3 != -1 && (
+        /////////////////////////// PictureButton ///////////////////////////////
         <div className="spaceevenly mgt">
           <Button
             onClick={() => {
@@ -234,6 +290,7 @@ export default function CreateCoursePage() {
             )}
           </Modal>
         </div>
+        /////////////////////////// PictureButton ///////////////////////////////
       )}
     </>
   );
