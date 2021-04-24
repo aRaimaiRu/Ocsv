@@ -42,7 +42,7 @@ function App() {
     <Router>
       <ThemeProvider theme={theme}>
         <AppBar position="static">
-          <Toolbar style={{ backgroundColor: "red" }}>
+          <Toolbar>
             <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
             {!token && (
               <>
