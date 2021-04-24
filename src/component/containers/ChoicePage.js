@@ -24,7 +24,7 @@ export default function ChoicePage(props) {
               </option>
             ))}
           </select>
-        ) : props.mycontent.contentType == "Choiceแบบเลือกตอบ" ? (
+        ) : props.mycontent.contentType == "Choiceแบบเลือก" ? (
           <input
             type="radio"
             name="site_name"

@@ -133,7 +133,7 @@ export default function BoxColumn3({
             <select value={modalInput.contentType} onChange={handleModalInput}>
               <option value="Content">Content</option>
               <option value="หัวข้อคำถาม">หัวข้อคำถาม</option>
-              <option value="Choiceแบบเลือกตอบ">Choiceแบบเลือกตอบ</option>
+              <option value="Choiceแบบเลือก">Choiceแบบเลือก</option>
               <option value="Choiceตัวเลือกแบบมีลำดับ">
                 Choiceตัวเลือกแบบมีลำดับ
               </option>

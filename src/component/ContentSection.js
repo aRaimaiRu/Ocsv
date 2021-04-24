@@ -59,7 +59,7 @@ export default function ContentSection(props) {
             <Button
               onClick={() => {
                 if (
-                  mycontent.contentType === "Choiceแบบเลือกตอบ" &&
+                  mycontent.contentType === "Choiceแบบเลือก" &&
                   mycontent.Answer.length >= 1
                 ) {
                   mycontent.Choice.push("");
