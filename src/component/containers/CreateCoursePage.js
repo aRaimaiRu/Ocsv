@@ -137,14 +137,14 @@ export default function CreateCoursePage() {
     "อธิบายเฉลยเพิ่มเติม",
     "ลิ้งค์เว็บไซต์ต่างประเทศ",
   ];
-  var allBuffer = [];
-  useEffect(() => {
-    createDataForCSV();
-  }, [grade, module, main, sub, content]);
+  const [RealAllBuffer, setRealAllBuffer] = useState([]);
+  // useEffect(() => {
+  //   allBuffer = createDataForCSV();
+  // }, [grade, module, main, sub, content]);
 
   const createDataForCSV = () => {
     var lineBuffer = [];
-    allBuffer = [];
+    var allBuffer = [];
     allBuffer.push(header);
     for (var i = 0; i < main.length; i++) {
       var currentMain = main[i];
@@ -184,6 +184,7 @@ export default function CreateCoursePage() {
         }
       }
     }
+    setRealAllBuffer(allBuffer);
     console.log("allBuffer =", allBuffer);
   };
 
@@ -214,8 +215,9 @@ export default function CreateCoursePage() {
 
       <div className="spaceevenly mgt">
         <Button onClick={handleSave}>Save</Button>
+
         <CSVLink
-          data={allBuffer}
+          data={RealAllBuffer}
           asyncOnClick={true}
           onClick={async (event, done) => {
             await createDataForCSV();
