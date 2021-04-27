@@ -39,7 +39,7 @@ export default function LoginPage({ setToken }) {
       password,
     });
     setToken(token);
-    console.log(token);
+
   }
 
   return (

@@ -17,7 +17,6 @@ export default function CoursePage(props) {
       .then((data) => data.json())
       .then((data) => {
         setState(Object.values(data));
-        console.log(state);
         return data;
       });
   }, []);

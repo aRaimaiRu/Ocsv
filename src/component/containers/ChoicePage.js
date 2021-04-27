@@ -1,9 +1,7 @@
-import React, { Component } from "react";
+import React from "react";
 import Button from "@material-ui/core/Button";
-import Checkbox from "@material-ui/core/Checkbox";
 
 import { createListRange } from "../../utils";
-import { inArray } from "jquery";
 
 export default function ChoicePage(props) {
   return (

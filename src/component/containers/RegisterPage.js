@@ -26,7 +26,7 @@ export default function RegisterPage({ setToken }) {
       password,
     });
     setToken(token);
-    console.log("register", token);
+  
   }
 
   return (

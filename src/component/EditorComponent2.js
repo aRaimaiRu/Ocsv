@@ -7,7 +7,7 @@ import { convertToHTML, convertFromHTML } from "draft-convert";
 import "./EditorComponent2.css";
 const c = `<h1>test</h1>`;
 const EditorComponent2 = (props) => {
-  console.log(props.mycontent.content);
+  // console.log(props.mycontent.content);
 
   const [editorState, setEditorState] = useState(() =>
     // EditorState.createEmpty()

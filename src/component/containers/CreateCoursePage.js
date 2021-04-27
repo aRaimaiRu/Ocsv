@@ -82,7 +82,6 @@ export default function CreateCoursePage() {
   };
 
   const handleSave = async () => {
-    console.log(location.state.AuthorID);
     if (!location.pathname.includes("edit")) {
       fetch("http://localhost:3001/api/v1/allcontent/create", {
         method: "POST",
@@ -138,9 +137,6 @@ export default function CreateCoursePage() {
     "ลิ้งค์เว็บไซต์ต่างประเทศ",
   ];
   const [RealAllBuffer, setRealAllBuffer] = useState([]);
-  // useEffect(() => {
-  //   allBuffer = createDataForCSV();
-  // }, [grade, module, main, sub, content]);
 
   const createDataForCSV = () => {
     var lineBuffer = [];
@@ -185,7 +181,6 @@ export default function CreateCoursePage() {
       }
     }
     setRealAllBuffer(allBuffer);
-    console.log("allBuffer =", allBuffer);
   };
 
   return (
