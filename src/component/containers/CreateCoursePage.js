@@ -83,7 +83,7 @@ export default function CreateCoursePage() {
 
   const handleSave = async () => {
     if (!location.pathname.includes("edit")) {
-      fetch("http://localhost:3006/api/v1/allcontent/create", {
+      fetch("http://103.74.255.77:3006/api/v1/allcontent/create", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -111,7 +111,7 @@ export default function CreateCoursePage() {
         content,
       });
       console.log(location.state.AuthorID);
-      fetch("http://localhost:3006/api/v1/allcontent/edit", {
+      fetch("http://103.74.255.77:3006/api/v1/allcontent/edit", {
         method: "put",
         headers: {
           "Content-Type": "application/json",

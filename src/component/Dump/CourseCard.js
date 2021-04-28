@@ -2,7 +2,7 @@ import React from "react";
 import MyCard from "./outlinedCard";
 export default function CourseCard({ courses, token, setState }) {
   const handleDelete = (_id) => {
-    fetch("http://localhost:3006/api/v1/allcontent/delete", {
+    fetch("http://103.74.255.77:3006/api/v1/allcontent/delete", {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

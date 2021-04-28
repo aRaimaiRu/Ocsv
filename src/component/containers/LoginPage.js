@@ -14,7 +14,7 @@ import "./LoginPage.css";
 //     console.log(messages.json());
 //   });
 async function loginUser(credentials) {
-  return fetch("http://localhost:3006/api/v1/auth", {
+  return fetch("http://103.74.255.77:3006/api/v1/auth", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",

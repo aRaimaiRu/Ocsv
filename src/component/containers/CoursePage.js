@@ -6,7 +6,7 @@ export default function CoursePage(props) {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:3006/api/v1/allcontent/", {
+    fetch("http://103.74.255.77:3006/api/v1/allcontent/", {
       method: "GET",
       headers: {
         "Content-Type": "application/json",
