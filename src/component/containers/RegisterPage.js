@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 // import "./RegisterPage.css";
 async function registerUser(credentials) {
-  return fetch("http://localhost:3001/api/v1/users/register", {
+  return fetch("http://localhost:3006/api/v1/users/register", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
