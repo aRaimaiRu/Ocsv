@@ -9,6 +9,7 @@ import Modal from "@material-ui/core/Modal";
 import { useLocation } from "react-router-dom";
 import { CSVLink, CSVDownload } from "react-csv";
 import ChoicePage from "./ChoicePage";
+import { createCourse, editCourse } from "../../utils";
 export default function CreateCoursePage() {
   const location = useLocation();
   console.log("location = ", location);
@@ -83,43 +84,36 @@ export default function CreateCoursePage() {
 
   const handleSave = async () => {
     if (!location.pathname.includes("edit")) {
-      fetch("http://103.74.255.77:3006/api/v1/allcontent/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": location.state.token,
-        },
-        body: JSON.stringify({
+      createCourse(
+        location.state.token,
+        JSON.stringify({
           module,
           grade,
           mainTopic: main,
           subTopic: sub,
           content,
-        }),
-      })
-        .then((data) => data.json())
-        .then((data) => {
-          console.log("post data =", data);
-        });
+        })
+      );
     } else if (location.pathname.includes("edit")) {
-      let editBody = JSON.stringify({
-        _id: location.state._id,
-        module,
-        grade,
-        mainTopic: main,
-        subTopic: sub,
-        content,
-      });
-      console.log(location.state.AuthorID);
-      fetch("http://103.74.255.77:3006/api/v1/allcontent/edit", {
-        method: "put",
-        headers: {
-          "Content-Type": "application/json",
-          "x-auth-token": location.state.token,
-          Accept: "application/json",
-        },
-        body: editBody,
-      }).then((data) => data.json());
+      editCourse(
+        location.state.token,
+        JSON.stringify({
+          _id: location.state._id,
+          module,
+          grade,
+          mainTopic: main,
+          subTopic: sub,
+          content,
+        })
+      )
+        .then((data) => {
+          alert("Save Successful");
+          return data;
+        })
+        .catch((e) => {
+          alert("error");
+          console.log("error", e);
+        });
     }
   };
   const header = [

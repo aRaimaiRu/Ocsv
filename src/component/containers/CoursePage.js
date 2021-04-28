@@ -2,21 +2,18 @@ import Button from "@material-ui/core/Button";
 import CourseCard from "../Dump/CourseCard";
 import React, { Component, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { getAllContent } from "../../utils";
 export default function CoursePage(props) {
   const [state, setState] = useState([]);
 
   useEffect(() => {
-    fetch("http://103.74.255.77:3006/api/v1/allcontent/", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-
-        "x-auth-token": JSON.parse(props.token)._id,
-      },
-    })
-      .then((data) => data.json())
+    getAllContent(props.token)
       .then((data) => {
         setState(Object.values(data));
+        return data;
+      })
+      .then((data) => {
+        console.log("state = ", state);
         return data;
       });
   }, []);

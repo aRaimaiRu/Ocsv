@@ -1,19 +1,15 @@
 import React from "react";
 import MyCard from "./outlinedCard";
+import { deleteCourse } from "../../utils";
 export default function CourseCard({ courses, token, setState }) {
   const handleDelete = (_id) => {
-    fetch("http://103.74.255.77:3006/api/v1/allcontent/delete", {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "x-auth-token": token,
-      },
-      body: JSON.stringify({
-        _id,
-      }),
-    }).then((data) => {
-      window.location.reload();
-    });
+    deleteCourse(token, _id)
+      .then((data) => {
+        window.location.reload();
+      })
+      .catch((e) => {
+        console.log("Delete error ", e);
+      });
   };
   return (
     <div className="Courses">

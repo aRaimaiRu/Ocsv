@@ -1,34 +1,10 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { loginUser, checkUndefined } from "../../utils";
 import "./LoginPage.css";
-// console.log(JSON.stringify(credentials));
-//   fetch("http://localhost:3001/api/v1/auth", {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//       Accept: "application/json",
-//     },
-//     body: JSON.stringify(credentials),
-//   }).then((messages) => {
-//     console.log(messages.json());
-//   });
-async function loginUser(credentials) {
-  return fetch("http://103.74.255.77:3006/api/v1/auth", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-      Accept: "application/json",
-    },
-    body: JSON.stringify(credentials),
-  })
-    .then((data) => data.json())
-    .then((data) => {
-      console.log("data =", data);
-    });
-}
 
-export default function LoginPage({ setToken }) {
+export default function LoginPage({ setToken, fn }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -38,11 +14,16 @@ export default function LoginPage({ setToken }) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    const token = await loginUser({
+    const token = await fn({
       email,
       password,
     });
-    setToken(token);
+    if (!checkUndefined(token)) {
+      setToken(token);
+      window.location.href.includes("Register")
+        ? window.location.replace("/")
+        : window.location.reload();
+    }
   }
 
   return (
@@ -65,14 +46,8 @@ export default function LoginPage({ setToken }) {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
-        <Button
-          block
-          size="lg"
-          type="submit"
-          disabled={!validateForm()}
-          onClick={() => window.location.reload()}
-        >
-          Login
+        <Button block size="lg" type="submit" disabled={!validateForm()}>
+          {window.location.href.includes("Register") ? "Register" : "Login"}
         </Button>
       </Form>
     </div>

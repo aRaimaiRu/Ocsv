@@ -5,15 +5,15 @@ import CreateCoursePage from "./component/containers/CreateCoursePage";
 import ChoicePage from "./component/containers/ChoicePage";
 import QuestionPage from "./component/containers/QuestionPage";
 import LoginPage from "./component/containers/LoginPage";
-import RegisterPage from "./component/containers/RegisterPage";
 import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
 import useToken from "./component/useToken/useToken";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
+import { loginUser, registerUser } from "./utils";
 function App() {
   const { token, setToken, deleteToken } = useToken();
   const theme = createMuiTheme({
@@ -62,16 +62,14 @@ function App() {
           </Toolbar>
         </AppBar>
         <Container className="container">
-        
-
           <Switch>
             {!token && (
               <>
                 <Route exact path="/Register">
-                  <RegisterPage setToken={setToken} />
+                  <LoginPage setToken={setToken} fn={registerUser} />
                 </Route>
                 <Route exact path="/">
-                  <LoginPage setToken={setToken} />
+                  <LoginPage setToken={setToken} fn={loginUser} />
                 </Route>
               </>
             )}
