@@ -21,7 +21,11 @@ async function loginUser(credentials) {
       Accept: "application/json",
     },
     body: JSON.stringify(credentials),
-  }).then((data) => data.json());
+  })
+    .then((data) => data.json())
+    .then((data) => {
+      console.log("data =", data);
+    });
 }
 
 export default function LoginPage({ setToken }) {
@@ -39,7 +43,6 @@ export default function LoginPage({ setToken }) {
       password,
     });
     setToken(token);
-
   }
 
   return (
