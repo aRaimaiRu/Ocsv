@@ -58,6 +58,8 @@ export default function BoxColumn3({
 
   const createNewsub = (modalInput) => {
     const index = content.findIndex((obj) => modalInput.id == obj.id);
+    modalInput = { ...modalInput, Answer: [], Choice: [] };
+    console.log("createNewsub", modalInput);
     setContent((prev) =>
       index == -1
         ? [...prev, modalInput]
@@ -85,6 +87,7 @@ export default function BoxColumn3({
       }),
     [selection2]
   );
+  console.log("content =", content);
 
   return (
     <div class="col-md-4  ">
