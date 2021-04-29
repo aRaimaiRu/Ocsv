@@ -13,9 +13,14 @@ import { createCourse, editCourse } from "../../utils";
 export default function CreateCoursePage() {
   const location = useLocation();
   console.log("location = ", location);
-  const [grade, setGrade] = useState(location.state.grade);
-  const [module, setModule] = useState(location.state.module);
-  const [main, setMain] = useState(location.state.mainTopic);
+  try {
+    const [grade, setGrade] = useState(location.state.grade);
+    const [module, setModule] = useState(location.state.module);
+    const [main, setMain] = useState(location.state.mainTopic);
+  } catch (e) {
+    console.log("CreateCoursePage Error", e);
+    window.location.replace("/");
+  }
 
   const createMain = () => {
     setMain([...main, { id: randomInt(), title: "..." }]);
