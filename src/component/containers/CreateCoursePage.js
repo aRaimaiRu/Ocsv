@@ -93,7 +93,10 @@ export default function CreateCoursePage() {
           subTopic: sub,
           content,
         })
-      );
+      ).then((data) => {
+        window.location.replace("/");
+        return data;
+      });
     } else if (location.pathname.includes("edit")) {
       editCourse(
         location.state.token,
