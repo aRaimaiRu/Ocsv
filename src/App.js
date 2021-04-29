@@ -43,7 +43,11 @@ function App() {
       <ThemeProvider theme={theme}>
         <AppBar position="static">
           <Toolbar>
-            <Typography variant="h6" style={{ flexGrow: 1 }}></Typography>
+            <Typography variant="h6" style={{ flexGrow: 1 }}>
+              <a href="/" style={{ color: "black" }}>
+                Home
+              </a>
+            </Typography>
             {!token && (
               <>
                 <Button color="inherit" href="/">
