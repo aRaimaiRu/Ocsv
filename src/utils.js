@@ -5,8 +5,8 @@ const randomInt = () => {
 const createListRange = (n) => {
   return [...Array(n).keys()];
 };
-// const port = "103.74.255.77:3006";
-const port = "localhost:3001";
+const port = "103.74.255.77:3006";
+// const port = "localhost:3001";
 
 async function loginUser(credentials) {
   return fetch(`http://${port}/api/v1/auth`, {
